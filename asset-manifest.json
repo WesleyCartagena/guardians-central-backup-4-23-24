@@ -1,16 +1,15 @@
 {
   "files": {
     "main.css": "/guardians-central/static/css/main.073c9b0a.css",
-    "main.js": "/guardians-central/static/js/main.9a399443.js",
+    "main.js": "/guardians-central/static/js/main.7658a7dd.js",
     "static/js/787.537c4c87.chunk.js": "/guardians-central/static/js/787.537c4c87.chunk.js",
-    "static/media/logo.svg": "/guardians-central/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/guardians-central/index.html",
     "main.073c9b0a.css.map": "/guardians-central/static/css/main.073c9b0a.css.map",
-    "main.9a399443.js.map": "/guardians-central/static/js/main.9a399443.js.map",
+    "main.7658a7dd.js.map": "/guardians-central/static/js/main.7658a7dd.js.map",
     "787.537c4c87.chunk.js.map": "/guardians-central/static/js/787.537c4c87.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.073c9b0a.css",
-    "static/js/main.9a399443.js"
+    "static/js/main.7658a7dd.js"
   ]
 }
