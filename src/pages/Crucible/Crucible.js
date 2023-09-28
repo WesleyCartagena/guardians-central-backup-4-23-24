@@ -6,7 +6,7 @@ const Crucible = () => {
         <div>
             <h1>Welcome to the Guardians Central Crucible Page</h1>
             <NavLink to="/">
-                <div>To Home Page</div>
+            <button className="btn btn-primary">To Home Page</button>
             </NavLink>
         </div>
     );
