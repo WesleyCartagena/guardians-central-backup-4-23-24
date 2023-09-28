@@ -1,6 +1,10 @@
-export const Crucible = () => {
+import React from 'react'
+
+const Crucible = () => {
     return(
-        <h1>Welcome to the Guardians Central Crucible Page</h1>
+        <div>
+            <h1>Welcome to the Guardians Central Crucible Page</h1>
+        </div>
     );
 }
 
