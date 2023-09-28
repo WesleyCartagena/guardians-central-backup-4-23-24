@@ -7,6 +7,12 @@ const Home = () => {
             <NavLink to="crucible">
                 <div>To Crucible Page</div>
             </NavLink>
+            <NavLink to="vanguard">
+                <div>To Vanguard Page</div>
+            </NavLink>
+            <NavLink to="gambit">
+                <div>To Gambit Page</div>
+            </NavLink>
         </div>
     );
 }
