@@ -5,13 +5,13 @@ const Home = () => {
         <div>
             <h1>Welcome to the Guardians Central Home Page</h1>
             <NavLink to="crucible">
-                <div>To Crucible Page</div>
+                <button className="btn btn-primary">To Crucible Page</button>
             </NavLink>
             <NavLink to="vanguard">
-                <div>To Vanguard Page</div>
+                <button className="btn btn-primary">To Vanguard Page</button>
             </NavLink>
             <NavLink to="gambit">
-                <div>To Gambit Page</div>
+                <button className="btn btn-primary">To Gambit Page</button>
             </NavLink>
         </div>
     );
