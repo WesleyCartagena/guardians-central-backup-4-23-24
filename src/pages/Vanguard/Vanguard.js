@@ -1,10 +1,10 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
-const Crucible = () => {
+const Vanguard = () => {
     return(
         <div>
-            <h1>Welcome to the Guardians Central Crucible Page</h1>
+            <h1>Welcome to the Guardians Central Vanguard Page</h1>
             <NavLink to="/">
                 <div>To Home Page</div>
             </NavLink>
@@ -12,4 +12,4 @@ const Crucible = () => {
     );
 }
 
-export default Crucible
+export default Vanguard
