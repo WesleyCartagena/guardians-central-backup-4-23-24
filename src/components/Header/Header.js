@@ -1,9 +1,9 @@
 import React from "react"
-import { NavLink, Link} from "react-router-dom";
+import { Link} from "react-router-dom";
 
 const Header = () => {
     return(
-        <nav class="navbar bg-dark border-bottom border-body navbar-expand-sm bg-body-tertiary" data-bs-theme="dark">
+        <nav class="navbar bg-dark border-bottom border-body navbar-expand-sm" data-bs-theme="dark">
             <div class="container-fluid justify-content-end">
                 <Link class="navbar-brand text-decoration-none" to="/">Guardian Central</Link>
                 <div class="collapse navbar-collapse justify-content-start" id="navbarSupportedContent">
