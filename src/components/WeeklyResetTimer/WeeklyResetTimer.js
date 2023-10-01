@@ -74,7 +74,7 @@ const WeeklyResetTimer = () => {
                 setFormattedMinutes(`${String(minutes).padStart(2, '0')}`);
                 setFormattedSeconds(seconds)
         }
-        if (days === 0 && hours === 0 && minutes === 0 && seconds == 0) {
+        if (days === 0 && hours === 0 && minutes === 0 && seconds === 0) {
             days = 6
             hours = 23
             minutes = 59
@@ -93,12 +93,8 @@ const WeeklyResetTimer = () => {
   return (
     <Card>
       <Card.Header className='fs-1'>Weekly Reset Timer</Card.Header>
-      <Card.Body>
-        <blockquote className="blockquote mb-0 fs-1">
-          <p>
+      <Card.Body className="mb-0 fs-1">
             {formattedDays} {formattedHours}:{formattedMinutes}:{formattedSeconds}
-          </p>
-        </blockquote>
       </Card.Body>
     </Card>
   );

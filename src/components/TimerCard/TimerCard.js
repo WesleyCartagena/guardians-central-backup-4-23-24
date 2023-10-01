@@ -31,9 +31,7 @@ const TimerCard = () => {
         </Nav>
       </Card.Header>
       <Card.Body>
-        <Card.Text>
           {renderSelectedTimer()}
-        </Card.Text>
       </Card.Body>
     </Card>
   );

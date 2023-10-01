@@ -54,7 +54,7 @@ const DailyResetTimer = () => {
                 hours--;
                 minutes = 60
         }
-        if (hours === 0 && minutes === 0 && seconds == 0) {
+        if (hours === 0 && minutes === 0 && seconds === 0) {
             hours = 23
             minutes = 59
             seconds = 60
@@ -70,12 +70,8 @@ const DailyResetTimer = () => {
     return (
         <Card>
         <Card.Header className='fs-1'>Daily Reset Timer</Card.Header>
-        <Card.Body>
-          <blockquote className="blockquote mb-0 fs-1">
-            <p>
+        <Card.Body className ="mb-0 fs-1">
                 {formattedHours}:{formattedMinutes}:{formattedSeconds}
-            </p>
-          </blockquote>
         </Card.Body>
       </Card>
     );
