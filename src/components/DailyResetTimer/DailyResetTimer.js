@@ -54,7 +54,7 @@ const DailyResetTimer = () => {
                 hours--;
                 minutes = 60
         }
-        if (hours === 0 && minutes === 0 && seconds == 0) {
+        if (hours === 0 && minutes === 0 && seconds === 0) {
             hours = 23
             minutes = 59
             seconds = 60
