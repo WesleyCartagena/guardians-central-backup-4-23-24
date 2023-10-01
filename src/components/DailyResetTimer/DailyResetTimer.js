@@ -9,7 +9,6 @@ const DailyResetTimer = () => {
     useEffect(()=>{
     // Get current UTC Time
     const now = new Date();
-    console.log(now)
 
     // Creates a Date object representing 1700UTC destiny's reset time
     const destinyDailyReset = new Date();
@@ -17,7 +16,6 @@ const DailyResetTimer = () => {
 
     // Gives a time difference in milliseconds
     const timeDifference = destinyDailyReset - now;
-    console.log(timeDifference)
 
     // Calculate the seconds from the remaining time
     const secondsDifference = Math.floor(timeDifference / 1000);
