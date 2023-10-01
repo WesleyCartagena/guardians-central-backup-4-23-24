@@ -64,7 +64,7 @@ const WeeklyResetTimer = () => {
                 hours--;
                 minutes = 60
         }
-        if (days > 0 && hours === 0) {
+        if (days > 0 && hours === 0 && minutes === 0 && seconds === 0) {
             setFormattedDays(`${String(days - 1).padStart(2, '0')}d`);
                 days--;
                 hours = 23

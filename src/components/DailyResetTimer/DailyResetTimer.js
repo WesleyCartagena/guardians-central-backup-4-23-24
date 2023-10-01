@@ -12,6 +12,7 @@ const DailyResetTimer = () => {
 
     // Creates a Date object representing 1700UTC destiny's reset time
     const destinyDailyReset = new Date();
+    destinyDailyReset.setUTCDate(destinyDailyReset.getUTCDate() + 1)
     destinyDailyReset.setUTCHours(17,0,0,0);
 
     // Gives a time difference in milliseconds
@@ -61,7 +62,7 @@ const DailyResetTimer = () => {
             setFormattedHours(hours)
             setFormattedMinutes(`${String(minutes).padStart(2, '0')}`);
             setFormattedSeconds(seconds)
-        }        
+        }     
 
     }, 1000);
     return () => timerInterval;
