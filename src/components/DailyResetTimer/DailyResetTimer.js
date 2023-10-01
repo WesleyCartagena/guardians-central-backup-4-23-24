@@ -27,7 +27,8 @@ const DailyResetTimer = () => {
     let remainingSeconds = secondsDifference % 3600;
     let minutes = Math.floor(remainingSeconds / 60);
     let seconds = remainingSeconds % 60;
-
+    
+    // Setting hours minutes and seconds for initial component load
     const formattedHourStr = `${String(hours).padStart(2, '0')}`;
     const formattedMinutesStr = `${String(minutes).padStart(2, '0')}`;
     const formattedSecondsStr = `${String(seconds).padStart(2, '0')}`;
@@ -36,6 +37,7 @@ const DailyResetTimer = () => {
     setFormattedMinutes(formattedMinutesStr)
     setFormattedSeconds(formattedSecondsStr)
 
+    // Countdown timer 
     const timerInterval = setInterval(() => {
         if (seconds > 0) {
             setFormattedSeconds(
@@ -66,7 +68,7 @@ const DailyResetTimer = () => {
     }, 1000);
     return () => timerInterval;
     },[]);
-    
+
     return (
         <Card>
         <Card.Header className='fs-1'>Daily Reset Timer</Card.Header>

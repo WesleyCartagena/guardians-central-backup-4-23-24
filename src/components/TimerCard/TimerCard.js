@@ -10,6 +10,7 @@ const TimerCard = () => {
     setTab(tab)
   }
 
+  // Renders a timer based on selected tab
   const renderSelectedTimer = () => {
     if (activeTab === 'daily') {
       return <DailyResetTimer />;

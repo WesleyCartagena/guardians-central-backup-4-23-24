@@ -34,7 +34,7 @@ const WeeklyResetTimer = () => {
     let minutes = Math.floor(secondsDifference / 60);
     let seconds = secondsDifference % 60;
 
-    // Format the time components
+    // Setting days hours minutes and seconds for initial component load
     const formattedDaysStr = `${String(days).padStart(2, '0')}d`;
     const formattedHoursStr = `${String(hours).padStart(2, '0')}`;
     const formattedMinutesStr = `${String(minutes).padStart(2, '0')}`;
@@ -45,6 +45,7 @@ const WeeklyResetTimer = () => {
     setFormattedMinutes(formattedMinutesStr);
     setFormattedSeconds(formattedSecondsStr);
 
+    // Countdown timer
     const timerInterval = setInterval(() => {
         if (seconds > 0) {
             setFormattedSeconds(
