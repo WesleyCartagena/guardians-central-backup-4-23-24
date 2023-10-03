@@ -3,6 +3,7 @@ import Card from 'react-bootstrap/Card';
 import Nav from 'react-bootstrap/Nav';
 import DailyResetTimer from '../DailyResetTimer/DailyResetTimer';
 import WeeklyResetTimer from '../WeeklyResetTimer/WeeklyResetTimer';
+import './TimerCard.css';
 
 const TimerCard = () => {
   const [activeTab, setTab] = useState('daily'); 
@@ -19,18 +20,18 @@ const TimerCard = () => {
     }
   }
   return (
-    <Card className='w-50'>
-      <Card.Header>
+    <Card className=''>
+      <Card.Header className='bg-dark'>
         <Nav variant="tabs" defaultActiveKey="#daily">
-          <Nav.Item>
-            <Nav.Link active={activeTab === 'daily'} onClick={() => handleTabSelect('daily')}>Daily Reset Timer</Nav.Link>
+          <Nav.Item >
+            <Nav.Link style={{color:'#b48608'}} active={activeTab === 'daily'} onClick={() => handleTabSelect('daily')}>Daily Reset Timer</Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link active={activeTab === 'weekly'} onClick={() => handleTabSelect('weekly')}>Weekly Reset Timer</Nav.Link>
+            <Nav.Link style={{color:'#b48608'}}active={activeTab === 'weekly'} onClick={() => handleTabSelect('weekly')}>Weekly Reset Timer</Nav.Link>
           </Nav.Item>
         </Nav>
       </Card.Header>
-      <Card.Body>
+      <Card.Body className=''>
           {renderSelectedTimer()}
       </Card.Body>
     </Card>
