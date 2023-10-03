@@ -48,41 +48,42 @@ const WeeklyResetTimer = () => {
     // Countdown timer
     const timerInterval = setInterval(() => {
         if (seconds > 0) {
-            setFormattedSeconds(
-                `${String(seconds - 1).padStart(2, '0')}`);
-                seconds--;
+          seconds--;
+          setFormattedSeconds(`${String(seconds).padStart(2, '0')}`);
         }
         if (minutes > 0 && seconds === 0) {
-            setFormattedMinutes(
-                `${String(minutes - 1).padStart(2, '0')}`);
-                minutes--;
-                seconds = 60
+          minutes--;
+          seconds = 59
+          setFormattedMinutes(`${String(minutes).padStart(2, '0')}`);
+          setFormattedSeconds(`${String(seconds).padStart(2, '0')}`);
         }
         if (hours > 0 && minutes === 0 && seconds === 0) {
-            setFormattedHours(
-                `${String(hours - 1).padStart(2, '0')}`);
-                hours--;
-                minutes = 60
+          hours--;
+          minutes = 59
+          seconds = 59
+          setFormattedHours(`${String(hours).padStart(2, '0')}`);
+          setFormattedMinutes(`${String(minutes).padStart(2, '0')}`);
+          setFormattedSeconds(`${String(seconds).padStart(2, '0')}`);
         }
         if (days > 0 && hours === 0 && minutes === 0 && seconds === 0) {
-            setFormattedDays(`${String(days - 1).padStart(2, '0')}d`);
-                days--;
-                hours = 23
-                minutes = 59
-                seconds = 60
-                setFormattedHours(hours)
-                setFormattedMinutes(`${String(minutes).padStart(2, '0')}`);
-                setFormattedSeconds(seconds)
+          days--;
+          hours = 23
+          minutes = 59
+          seconds = 59
+          setFormattedDays(`${String(days).padStart(2, '0')}d`);
+          setFormattedHours(`${String(hours).padStart(2, '0')}`);
+          setFormattedMinutes(`${String(minutes).padStart(2, '0')}`);
+          setFormattedSeconds(`${String(seconds).padStart(2, '0')}`);
         }
         if (days === 0 && hours === 0 && minutes === 0 && seconds === 0) {
-            days = 6
-            hours = 23
-            minutes = 59
-            seconds = 60
-            setFormattedDays(`${String(days).padStart(2, '0')}d`)
-            setFormattedHours(hours)
-            setFormattedMinutes(`${String(minutes).padStart(2, '0')}`);
-            setFormattedSeconds(seconds)
+          days = 7
+          hours = 0
+          minutes = 0
+          seconds = 0
+          setFormattedDays(`${String(days).padStart(2, '0')}d`);
+          setFormattedHours(`${String(hours).padStart(2, '0')}`);
+          setFormattedMinutes(`${String(minutes).padStart(2, '0')}`);
+          setFormattedSeconds(`${String(seconds).padStart(2, '0')}`);
         }        
 
     }, 1000);
