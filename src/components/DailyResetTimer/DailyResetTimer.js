@@ -7,16 +7,22 @@ const DailyResetTimer = () => {
     const [formattedSeconds, setFormattedSeconds] = useState('');
 
     useEffect(()=>{
-    // Get current UTC Time
+    // Get current Time and convert date object to UTC Object
     const now = new Date();
+    const nowUtcDate = new Date(now.toUTCString())
 
     // Creates a Date object representing 1700UTC destiny's reset time
-    const destinyDailyReset = new Date();
-    destinyDailyReset.setUTCDate(destinyDailyReset.getUTCDate() + 1)
+    const destinyDailyReset = new Date(nowUtcDate);
     destinyDailyReset.setUTCHours(17,0,0,0);
 
     // Gives a time difference in milliseconds
-    const timeDifference = destinyDailyReset - now;
+    let timeDifference = destinyDailyReset - nowUtcDate;
+    
+    // Adds a day if time 
+    if (timeDifference < 0 ) {
+        destinyDailyReset.setUTCDate(destinyDailyReset.getUTCDate() + 1)
+        timeDifference = destinyDailyReset - nowUtcDate;
+    }
 
     // Calculate the seconds from the remaining time
     const secondsDifference = Math.floor(timeDifference / 1000);
