@@ -55,7 +55,7 @@ const DailyResetTimer = () => {
                 minutes--;
                 seconds = 60
         }
-        if (hours > 0 && minutes === 0) {
+        if (hours > 0 && minutes === 0 && seconds === 0) {
             setFormattedHours(
                 `${String(hours - 1).padStart(2, '0')}`);
                 hours--;
