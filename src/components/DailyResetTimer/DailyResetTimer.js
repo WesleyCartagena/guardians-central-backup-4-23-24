@@ -76,8 +76,8 @@ const DailyResetTimer = () => {
 
     return (
         <Card>
-        <Card.Header className='fs-1'>Daily Reset Timer</Card.Header>
-        <Card.Body className ="mb-0 fs-1">
+        <Card.Header className='fs-1 bg-dark'>Daily Reset Timer</Card.Header>
+        <Card.Body className ="mb-0 fs-1 bg-light">
                 {formattedHours}:{formattedMinutes}:{formattedSeconds}
         </Card.Body>
       </Card>

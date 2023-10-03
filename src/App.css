@@ -6,38 +6,64 @@
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-}
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+  background-position: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+h1 { 
+  color: #b48608; 
+  font-family: 'Droid serif', serif; 
+  font-size: 36px; 
+  font-weight: 400; 
+  font-style: italic; 
+  line-height: 44px; 
+  margin: 0 0 12px; 
+  text-align: center; 
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+
+p { color: #eee; font-family: 'Droid Sans', sans-serif; font-size: 15px; font-weight: 400; line-height: 24px; margin: 0 0 14px; }
+
+
+a { color: #ffff; text-decoration: none; }
+
+a:hover { color: #b48608; text-decoration: blink; }
+
+
+.date { border-top: 1px solid #fff; position: relative; top: 20px; margin-bottom: 30px; }
+
+
+.date span { color: #000; text-decoration: none; font-style: italic; font-size: 13px; text-align: center; padding: 2px 5px; background: #fff; width: 120px; margin: 0 auto; display: block; position: relative; top: -10px; font-family: "Droid serif", serif; }
+
+
+a.btn { font-family: 'Droid serif', serif; background: #b48608; padding: 4px 7px; color: #000; text-decoration: none; margin: 0 auto; width: 100%; width: 120px; margin: 0 auto; display: block; text-align: center; font-style: italic; }
+
+
+a.btn:hover { color: #000; background: #fff; }
+
+
+.left { float: left; margin: 0 5% 30px 0; width: 30%; }
+
+
+.right { float: right; margin: 0 0 30px 0; width: 30%; }
+.card-nav{
+  color: #b48608;
+  font-family: 'Droid serif', serif; 
+}
+.card-header {
+  color: #b48608;
+  font-family: 'Droid serif', serif;
+
+}
+.card-body{
+  color: #000;
+  font-family: 'Droid serif', serif; 
+  background-color: #F5F5DC;
+  
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.nav-link{
+  color: #b48608;
+  font-family: 'Droid serif', serif;
+  text-decoration: none; 
 }
