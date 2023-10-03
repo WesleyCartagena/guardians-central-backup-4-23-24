@@ -18,7 +18,7 @@ const DailyResetTimer = () => {
     // Gives a time difference in milliseconds
     let timeDifference = destinyDailyReset - nowUtcDate;
     
-    // Adds a day if time 
+    // Adds a day if time time difference is negative
     if (timeDifference < 0 ) {
         destinyDailyReset.setUTCDate(destinyDailyReset.getUTCDate() + 1)
         timeDifference = destinyDailyReset - nowUtcDate;
