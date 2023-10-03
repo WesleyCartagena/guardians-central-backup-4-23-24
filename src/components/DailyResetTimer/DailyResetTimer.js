@@ -45,29 +45,30 @@ const DailyResetTimer = () => {
     // Countdown timer 
     const timerInterval = setInterval(() => {
         if (seconds > 0) {
-            setFormattedSeconds(
-                `${String(seconds - 1).padStart(2, '0')}`);
-                seconds--;
+            seconds--;
+            setFormattedSeconds(`${String(seconds).padStart(2, '0')}`);
         }
-        if (minutes > 0 && seconds === 0) {
-            setFormattedMinutes(
-                `${String(minutes - 1).padStart(2, '0')}`);
-                minutes--;
-                seconds = 60
+          if (minutes > 0 && seconds === 0) {
+            minutes--;
+            seconds = 59
+            setFormattedMinutes(`${String(minutes).padStart(2, '0')}`);
+            setFormattedSeconds(`${String(seconds).padStart(2, '0')}`);
         }
-        if (hours > 0 && minutes === 0 && seconds === 0) {
-            setFormattedHours(
-                `${String(hours - 1).padStart(2, '0')}`);
-                hours--;
-                minutes = 60
+          if (hours > 0 && minutes === 0 && seconds === 0) {
+            hours--;
+            minutes = 59
+            seconds = 59
+            setFormattedHours(`${String(hours).padStart(2, '0')}`);
+            setFormattedMinutes(`${String(minutes).padStart(2, '0')}`);
+            setFormattedSeconds(`${String(seconds).padStart(2, '0')}`);
         }
         if (hours === 0 && minutes === 0 && seconds === 0) {
-            hours = 23
-            minutes = 59
-            seconds = 60
-            setFormattedHours(hours)
+            hours = 24
+            minutes = 0
+            seconds = 0
+            setFormattedHours(`${String(hours).padStart(2, '0')}`)
             setFormattedMinutes(`${String(minutes).padStart(2, '0')}`);
-            setFormattedSeconds(seconds)
+            setFormattedSeconds(`${String(seconds).padStart(2, '0')}`)
         }     
 
     }, 1000);
