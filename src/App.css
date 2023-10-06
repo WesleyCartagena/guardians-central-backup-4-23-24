@@ -1,13 +1,17 @@
-.App {
-  text-align: center;
-  font-family: Arial, Helvetica, sans-serif;
+body { 
+  min-height: 115vh;
+  background-image: url(./assets/images/destiny2-traveler-2.jpg);
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  background-position: center;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
-
+.App {
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
 
 h1 { 
   color: #b48608; 
