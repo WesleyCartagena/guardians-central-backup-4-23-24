@@ -20,7 +20,7 @@ const TimerCard = () => {
     }
   }
   return (
-    <Card className=''>
+    <Card>
       <Card.Header className='bg-dark'>
         <Nav variant="tabs" defaultActiveKey="#daily">
           <Nav.Item >
