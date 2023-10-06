@@ -1,7 +1,7 @@
 import React from "react"
 import Accordion from 'react-bootstrap/Accordion';
 // To make this component more re-usable I would like to make an accordian itemm based on array size and passed in props. Prop names should be Header, Body
-// No Custom CSS for acco
+// No Custom CSS for accordian yet. Waiting on DB to be connected
 const HomeAccordian = () =>{
     return(
       <Accordion alwaysOpen>
