@@ -38,10 +38,12 @@ const TwitterTabs = () => {
       <Card>
       <Card.Header className='bg-dark'>
         <Nav variant="tabs">
-            {Object.keys(twitterAccounts).map((accountName) => ( 
+            {Object.keys(twitterAccounts).map((accountName) => (
+                <React.Fragment key={twitterAccounts[accountName].id}>
                 <Nav.Item>
                     <Nav.Link key={twitterAccounts[accountName].id} style={{color:'#b48608'}} active={activeTab === accountName} onClick={() => handleTabSelect(accountName)}>{accountName}</Nav.Link>
                 </Nav.Item>
+                </React.Fragment> 
             ))}
         </Nav>
       </Card.Header>
