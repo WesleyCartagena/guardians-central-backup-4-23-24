@@ -2,7 +2,6 @@ import '../../App.css'
 import TimerCard from '../../components/TimerCard/TimerCard';
 import Message from '../../components/Message/Message';
 import Accordian from '../../components/Accordian/Accordian'
-import TwitterWidget from '../../components/TwitterWidget/TwitterWidget';
 import TwitterTabs from '../../components/TwitterTabs/TwitterTabs';
 
 const Home = () => {
@@ -19,7 +18,6 @@ const Home = () => {
             <div className='d-inline-flex flex-column justify-content-center w-50'>
                 <TimerCard/>
                 <Accordian/>
-                {/*<TwitterWidget screenName = {bungieHelp}/>*/}
                 <TwitterTabs/>
             </div>
         </div>
