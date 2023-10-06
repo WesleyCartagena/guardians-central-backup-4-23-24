@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import TwitterWidget from "../TwitterWidget/TwitterWidget"
 import Card from 'react-bootstrap/Card';
 import Nav from 'react-bootstrap/Nav';
+import Spinner from 'react-bootstrap/Spinner';
 
 const TwitterTabs = () => {
     const twitterAccounts = {
@@ -9,20 +10,30 @@ const TwitterTabs = () => {
         'DestinyTheGame': { id: 2 },
         'Destiny2Team': { id: 3 },
     };
-    //      {twitterAccounts.map(item => ( <li key={item.id}>{item.account}</li>))}
 
-    const [activeTab, setTab] = useState('BungieHelp'); 
+    const [activeTab, setTab] = useState('BungieHelp');
+    const [isLoading, setLoading] = useState('');
     const handleTabSelect = (tab) => {
-      setTab(tab)
+        setLoading('')
+        setTab(tab)
     }
-  
-    // Renders a timer based on selected tab
+
+    // Sets a delay for spinner. Creates a visual trick to simulate loading between tabs
+    useEffect(() => {
+        const delay = setTimeout(() => {
+            setLoading('visually-hidden');
+        }, 1100); // Adjust the delay as needed
+        return () => clearTimeout(delay); // Clean up the timeout when the component unmounts
+    });
+
+    // Renders a Account based on selected tab
     const renderSelectedAccount = () => {
         const selectedAccount = twitterAccounts[activeTab];
         if (selectedAccount) {
             return <TwitterWidget screenName={activeTab} />;
         }
     }
+
     return(
       <Card>
       <Card.Header className='bg-dark'>
@@ -35,6 +46,9 @@ const TwitterTabs = () => {
         </Nav>
       </Card.Header>
       <Card.Body>
+        <Spinner className = {isLoading} animation="border" role="status">
+            <span className="visually-hidden">Loading...</span>
+        </Spinner>
           {renderSelectedAccount()}
       </Card.Body>
     </Card>
