@@ -10,7 +10,7 @@ const TwitterWidget = (props) => {
             screenName: props.screenName
         }}
         options={{
-            height: '500'
+            height: '425'
         }}
         />
     </div>

@@ -20,21 +20,23 @@ const TimerCard = () => {
     }
   }
   return (
-    <Card>
-      <Card.Header className='bg-dark'>
-        <Nav variant="tabs" defaultActiveKey="#daily">
-          <Nav.Item >
-            <Nav.Link style={{color:'#b48608'}} active={activeTab === 'daily'} onClick={() => handleTabSelect('daily')}>Daily Reset Timer</Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link style={{color:'#b48608'}}active={activeTab === 'weekly'} onClick={() => handleTabSelect('weekly')}>Weekly Reset Timer</Nav.Link>
-          </Nav.Item>
-        </Nav>
-      </Card.Header>
-      <Card.Body className=''>
-          {renderSelectedTimer()}
-      </Card.Body>
-    </Card>
+    <div className='p-4'>
+      <Card>
+        <Card.Header className='bg-dark'>
+          <Nav variant="tabs" defaultActiveKey="#daily">
+            <Nav.Item >
+              <Nav.Link style={{color:'#b48608'}} active={activeTab === 'daily'} onClick={() => handleTabSelect('daily')}>Daily Reset Timer</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link style={{color:'#b48608'}}active={activeTab === 'weekly'} onClick={() => handleTabSelect('weekly')}>Weekly Reset Timer</Nav.Link>
+            </Nav.Item>
+          </Nav>
+        </Card.Header>
+        <Card.Body className=''>
+            {renderSelectedTimer()}
+        </Card.Body>
+      </Card>
+    </div>
   );
 }
 

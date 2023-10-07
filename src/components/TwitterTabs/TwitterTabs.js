@@ -35,25 +35,27 @@ const TwitterTabs = () => {
     }
 
     return(
-      <Card>
-      <Card.Header className='bg-dark'>
-        <Nav variant="tabs">
-            {Object.keys(twitterAccounts).map((accountName) => (
-                <React.Fragment key={twitterAccounts[accountName].id}>
-                <Nav.Item>
-                    <Nav.Link key={twitterAccounts[accountName].id} style={{color:'#b48608'}} active={activeTab === accountName} onClick={() => handleTabSelect(accountName)}>{accountName}</Nav.Link>
-                </Nav.Item>
-                </React.Fragment> 
-            ))}
-        </Nav>
-      </Card.Header>
-      <Card.Body>
-        <Spinner className = {isLoading} animation="border" role="status">
-            <span className="visually-hidden">Loading...</span>
-        </Spinner>
-          {renderSelectedAccount()}
-      </Card.Body>
-    </Card>
+    <div className='p-4'>
+        <Card>
+            <Card.Header className='bg-dark'>
+                <Nav variant="tabs">
+                    {Object.keys(twitterAccounts).map((accountName) => (
+                        <React.Fragment key={twitterAccounts[accountName].id}>
+                        <Nav.Item>
+                            <Nav.Link key={twitterAccounts[accountName].id} style={{color:'#b48608'}} active={activeTab === accountName} onClick={() => handleTabSelect(accountName)}>{accountName}</Nav.Link>
+                        </Nav.Item>
+                        </React.Fragment> 
+                    ))}
+                </Nav>
+            </Card.Header>
+            <Card.Body>
+                <Spinner className = {isLoading} animation="border" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                </Spinner>
+                {renderSelectedAccount()}
+            </Card.Body>
+        </Card>
+    </div>
     );
 };
 
