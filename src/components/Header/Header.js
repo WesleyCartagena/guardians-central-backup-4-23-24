@@ -3,11 +3,12 @@ import {LinkContainer} from 'react-router-bootstrap'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import './Header.scss'
+import { Link } from "react-router-dom";
 
 const Header = () => {
+    
     return (
-        <Navbar variant='dark' bg="dark" expand="lg" className="">
+        <Navbar variant='dark' bg="dark" expand="lg">
         <Container className="container-nav">
           <LinkContainer to="/">
             <Navbar.Brand>Guardians Central</Navbar.Brand>
@@ -15,15 +16,17 @@ const Header = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav>
-              <LinkContainer to="vanguard">
-                <Nav.Link>Vanguard</Nav.Link>
-              </LinkContainer>
-              <LinkContainer to="crucible">
-                <Nav.Link>Crucible</Nav.Link>
-              </LinkContainer>
-              <LinkContainer to="gambit">
-                <Nav.Link>Gambit</Nav.Link>
-              </LinkContainer>
+                <ul className="navbar-nav mb-2 mb-lg-0 ">
+                    <li className="nav-item">
+                        <Link className="text-decoration-none px-2" to="vanguard">Vanguard</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link className="text-decoration-none px-2" to="crucible">Crucible</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link className="text-decoration-none px-2" to="gambit">Gambit</Link>
+                    </li>
+                </ul>
             </Nav>
           </Navbar.Collapse>
         </Container>
