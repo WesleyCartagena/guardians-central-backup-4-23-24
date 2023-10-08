@@ -3,7 +3,7 @@ import Card from 'react-bootstrap/Card';
 import Nav from 'react-bootstrap/Nav';
 import DailyResetTimer from '../DailyResetTimer/DailyResetTimer';
 import WeeklyResetTimer from '../WeeklyResetTimer/WeeklyResetTimer';
-import './TimerCard.css';
+import './TimerCard.scss';
 
 const TimerCard = () => {
   const [activeTab, setTab] = useState('daily'); 

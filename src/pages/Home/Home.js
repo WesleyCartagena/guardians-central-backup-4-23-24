@@ -1,4 +1,4 @@
-import '../../App.css'
+import '../../App.scss'
 import TimerCard from '../../components/TimerCard/TimerCard';
 import Accordian from '../../components/Accordian/Accordian'
 import TwitterTabs from '../../components/TwitterTabs/TwitterTabs';
