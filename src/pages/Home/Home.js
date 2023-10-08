@@ -7,7 +7,6 @@ import TwitterTabs from '../../components/TwitterTabs/TwitterTabs';
 const Home = () => {
 
     return(
-        // Remove Message once homepage is done
         <div className="Home">
             <div className='d-inline-flex flex-column justify-content-center w-100'>
                 <TimerCard/>
