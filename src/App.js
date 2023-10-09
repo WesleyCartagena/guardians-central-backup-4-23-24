@@ -4,9 +4,16 @@ import Crucible from './pages/Crucible/Crucible'
 import Vanguard from './pages/Vanguard/Vanguard'
 import Gambit from './pages/Gambit/Gambit'  
 import Layout from './components/Layout/Layout'
+import React, { useEffect } from "react";
 import './App.css';
 
 function App () {
+
+    useEffect(() => {
+        fetch("http://localhost:8000")
+        .then((res) => res.json());
+    }, []);
+
     return (
         <>
            <Routes>
