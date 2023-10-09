@@ -5,7 +5,7 @@ import Vanguard from './pages/Vanguard/Vanguard'
 import Gambit from './pages/Gambit/Gambit'  
 import Layout from './components/Layout/Layout'
 import React, { useEffect } from "react";
-import './App.css';
+import './App.scss';
 
 function App () {
 
