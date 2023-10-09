@@ -4,7 +4,7 @@ import Accordion from 'react-bootstrap/Accordion';
 // No Custom CSS for accordian yet. Waiting on DB to be connected
 const HomeAccordian = () =>{
     return(
-      <Accordion alwaysOpen>
+      <Accordion alwaysOpen className="p-4">
       <Accordion.Item eventKey="0">
         <Accordion.Header>Weekly Rotators</Accordion.Header>
         <Accordion.Body>

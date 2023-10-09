@@ -4,7 +4,7 @@ import Crucible from './pages/Crucible/Crucible'
 import Vanguard from './pages/Vanguard/Vanguard'
 import Gambit from './pages/Gambit/Gambit'  
 import Layout from './components/Layout/Layout'
-import './App.css';
+import './App.scss';
 
 function App () {
     return (
