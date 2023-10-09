@@ -8,7 +8,7 @@ const Home = () => {
 
     return(
         <div className="home">
-            <div className='d-inline-flex flex-column justify-content-center w-100'>
+            <div className='d-inline-flex flex-column justify-content-center w-100 gc-main-container'>
                 <TimerCard/>
                 <Accordian/>
                 <TwitterTabs/>
@@ -17,5 +17,4 @@ const Home = () => {
     );
 
 }
-
 export default Home;

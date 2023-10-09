@@ -4,14 +4,23 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from "react-router-dom";
+import img from '../../assets/images/logo192.png'
+import './Header.scss'
 
 const Header = () => {
     
     return (
         <Navbar variant='dark' bg="dark" expand="lg">
-        <Container className="container-nav">
+        <Container className="gc-navbar">
           <LinkContainer to="/">
-            <Navbar.Brand>Guardians Central</Navbar.Brand>
+            <Navbar.Brand>            
+            <img
+              alt=""
+              src={img}
+              width="30"
+              height="30"
+              className="d-inline-block align-top"
+            />{' '}Guardians Central</Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">

@@ -32,7 +32,7 @@ const TimerCard = () => {
             </Nav.Item>
           </Nav>
         </Card.Header>
-        <Card.Body className=''>
+        <Card.Body>
             {renderSelectedTimer()}
         </Card.Body>
       </Card>
