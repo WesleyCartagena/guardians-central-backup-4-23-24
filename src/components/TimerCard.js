@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import Card from 'react-bootstrap/Card';
 import Nav from 'react-bootstrap/Nav';
-import DailyResetTimer from '../DailyResetTimer/DailyResetTimer';
-import WeeklyResetTimer from '../WeeklyResetTimer/WeeklyResetTimer';
+import DailyResetTimer from './DailyResetTimer';
+import WeeklyResetTimer from './WeeklyResetTimer';
 import './TimerCard.scss';
 
 const TimerCard = () => {
