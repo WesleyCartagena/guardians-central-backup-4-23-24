@@ -4,7 +4,7 @@ import Accordian from '../../components/Accordian/Accordian'
 import TwitterTabs from '../../components/TwitterTabs/TwitterTabs';
 import './Home.scss'
 
-const Home = () => {
+const Home = (props) => {
 
     return(
         <div className="home">
@@ -12,6 +12,7 @@ const Home = () => {
                 <TimerCard/>
                 <Accordian/>
                 <TwitterTabs/>
+                <h1>{props.serverMessage}</h1>
             </div>
         </div>
     );
