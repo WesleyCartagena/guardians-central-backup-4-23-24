@@ -3,6 +3,7 @@ import TimerCard from '../components/TimerCard';
 import Accordian from '../components/Accordian'
 import TwitterTabs from '../components/TwitterTabs';
 import './Home.scss'
+import DatabaseComponent from '../components/DatabaseComponent';
 
 const Home = (props) => {
 
@@ -12,7 +13,7 @@ const Home = (props) => {
                 <TimerCard/>
                 <Accordian/>
                 <TwitterTabs/>
-                <h1>{props.serverMessage}</h1>
+                <DatabaseComponent/>
             </div>
         </div>
     );
