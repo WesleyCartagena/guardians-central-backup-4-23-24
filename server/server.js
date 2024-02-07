@@ -3,14 +3,10 @@ const express = require('express');
 const cors = require('cors');
 
 const app = express();
-const sqlite3 = require('sqlite3').verbose();
+const DatabaseConnection = require('./connection.js');
 
-let db = new sqlite3.Database('world_sql_content_683f6ecb4976bed01885c945993321d8.sqlite3', (err) =>{
-    if (err) {
-        return console.error(err.message);
-    }
-    console.log('Connected to the in-memory SQlite database.');
-});
+let db = new DatabaseConnection('world_sql_content_683f6ecb4976bed01885c945993321d8.sqlite3');//.Connect('world_sql_content_683f6ecb4976bed01885c945993321d8.sqlite3');
+db.Connect();
 
 app.use(cors());
 app.use(express.json());
@@ -28,25 +24,9 @@ app.get('/', (req, res) => {
 });
 
 app.get('/get-data', (req, res) => {
-    db.all('SELECT json FROM DestinyClassDefinition WHERE id = -2023284724;', (err, rows) => {
-      if (err) {
-        console.error(err.message);
-        res.status(500).json({ error: 'Failed to fetch data' });
-        console.log('error')
-      } else {
-        res.json(rows);
-      }
-    });
+	db.All('SELECT json FROM DestinyClassDefinition WHERE id = -2023284724;', res);
 });
 
 app.get('/get-vendor-information', (req, res) => {
-    db.all('SELECT json FROM DestinyVendorDefinition WHERE id = -133343406;', (err, rows) => {
-      if (err) {
-        console.error(err.message);
-        res.status(500).json({ error: 'Failed to fetch data' });
-        console.log('error')
-      } else {
-        res.json(rows);
-      }
-    });
+	db.All('SELECT json FROM DestinyVendorDefinition WHERE id = -133343406;', res);
 });

@@ -1,16 +1,33 @@
 const sqlite3 = require('sqlite3').verbose();
 
+let db = null;
 
-let db = new sqlite3.Database('world_sql_content_683f6ecb4976bed01885c945993321d8.sqlite3', (err) =>{
-    if (err) {
-        return console.error(err.message);
+class DatabaseConnection {
+    constructor(fileName) {
+        this.fileName = fileName;
     }
-    console.log('Connected to the in-memory SQlite database.');
-});
 
-db.close((err) => {
-    if (err) {
-        console.error(err.message);
+    Connect(){
+        db = new sqlite3.Database(this.fileName, (err) => {
+            if (err) {
+                return console.error(err.message);
+            }
+            console.log('Connected to the in-memory SQlite database.');
+        });
     }
-    console.log('Database connection closed.');
-});
+
+    All(stringQuery, res){
+        db.all(stringQuery, (err, rows) => {
+            if (err) {
+                console.error(err.message);
+                res.status(500).json({ error: 'Failed to fetch data' });
+                console.log('error')
+              } else {
+                res.json(rows);
+              }
+        });
+    }
+}
+
+module.exports = DatabaseConnection;
+
