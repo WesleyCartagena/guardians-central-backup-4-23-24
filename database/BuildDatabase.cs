@@ -2,56 +2,73 @@ using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Text.Json;
-using System.Collections.Generic;
 
-
-public class ManifestClass
+public class ManifestResponse
 {
-    public Dictionary<string, string> ManifestObject { get; set; } = new Dictionary<string, string>();
-    public Dictionary<string, string> MobileWorldContentPaths { get; set; } = new Dictionary<string, string>();
-}
+    public class mobileWorldContentPaths
+    {
+        public string en { get; set; }
+    }
 
+    public class ResponseData
+    {
+        public mobileWorldContentPaths mobileWorldContentPaths { get; set; }
+    }
+
+    public class RootObject
+    {
+        public ResponseData Response { get; set; }
+        public int ErrorCode { get; set; }
+        public int ThrottleSeconds { get; set; }
+        public string ErrorStatus { get; set; }
+        public string Message { get; set; }
+        public object MessageData { get; set; }
+    }
+}
 
 
 class Program
 {
     static async Task Main()
     {
-        // Replace this URL with the actual endpoint you want to request
         string getManifestURL = "https://www.bungie.net/Platform/Destiny2/Manifest/";
 
-        using (HttpClient httpClient = new HttpClient())
-        {
+        using (HttpClient httpClient = new HttpClient()){
             try
             {
-                // Send GET request
                 HttpResponseMessage getManifestResponse = await httpClient.GetAsync(getManifestURL);
 
-                // Check if the request was successful (status code 200 OK)
                 if (getManifestResponse.IsSuccessStatusCode)
                 {
-                    string getManifestResponseJson = await getManifestResponse.Content.ReadAsStringAsync();
+                    Console.WriteLine(getManifestResponse);
+                    string manifestResponseAsString = await getManifestResponse.Content.ReadAsStringAsync();
+                    //Console.WriteLine(manifestResponseAsString); // This is printing because it is returning something
+                    //Console.WriteLine(manifestResponseAsString.GetType()); // Type is System.String
 
-                    ManifestClass getManifestJson = JsonSerializer.Deserialize<ManifestClass>(getManifestResponseJson);
-                    Console.WriteLine($"ManifestObject: {getManifestJson.ManifestObject}");
-                    //string enPath = getManifestJson.MobileWorldContentPaths["en"];
-                    //Console.WriteLine($"Path for 'en': {enPath}");
-                    // Process the result
-                    //Console.WriteLine(getManifestResponseJson);
-                    //Console.WriteLine(typeof(getManifestResponseJson));
-                    //Console.WriteLine($"ManifestObject: {getManifestJson.ManifestObject}");
-                    //Console.WriteLine($"ManifestObject: {getManifestJson.ManifestObject}");
-                    
+                    ManifestResponse.RootObject manifestResponse = JsonSerializer.Deserialize<ManifestResponse.RootObject>(manifestResponseAsString);
+
+                    // Log the deserialized object
+                    Console.WriteLine("Deserialized Object:");
+                    Console.WriteLine(JsonSerializer.Serialize(manifestResponse, new JsonSerializerOptions { WriteIndented = true }));
+
+                    // Access and print MobileWorldContentPaths
+                    if (manifestResponse.Response != null && manifestResponse.Response.mobileWorldContentPaths != null)
+                    {
+                        Console.WriteLine($"English Content Path: {manifestResponse.Response.mobileWorldContentPaths.en}");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Unable to retrieve MobileWorldContentPaths.");
+                    }
+
                 }
                 else
                 {
-                    // Handle unsuccessful response
                     Console.WriteLine($"HTTP Status Code: {getManifestResponse.StatusCode}");
                 }
             }
             catch (HttpRequestException ex)
             {
-                // Handle exceptions
                 Console.WriteLine($"Error: {ex.Message}");
             }
         }
