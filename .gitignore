@@ -22,5 +22,22 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-
+# Database file
 /Sqlite3Destiny2DB.zip
+
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.suo
+*.sln.docstates
+
+# Visual Studio
+.vs/
+bin/
+obj/
+
+# Rider
+.idea/
