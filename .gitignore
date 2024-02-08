@@ -35,9 +35,9 @@ yarn-error.log*
 *.sln.docstates
 
 # Visual Studio
-.vs/
-bin/
-obj/
+/.vs
+/bin
+/obj
 
 # Rider
 .idea/
