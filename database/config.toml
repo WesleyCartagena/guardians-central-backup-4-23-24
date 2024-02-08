@@ -1,0 +1,4 @@
+BungieRootPath = "https://www.bungie.net"
+BungieAPIRootPath = "https://www.bungie.net/Platform"
+GetManifestEndpoint = "/Destiny2/Manifest/"
+DestinationFolderPath = "C:\\Users\\wesle\\Repos\\guardians-central"

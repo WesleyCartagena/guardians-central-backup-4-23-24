@@ -1,0 +1,41 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "database/1.0.0": {
+        "dependencies": {
+          "Nett": "0.15.0"
+        },
+        "runtime": {
+          "database.dll": {}
+        }
+      },
+      "Nett/0.15.0": {
+        "runtime": {
+          "lib/netstandard2.0/Nett.dll": {
+            "assemblyVersion": "0.15.0.0",
+            "fileVersion": "0.15.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "database/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Nett/0.15.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/0SoN9ugPKfmLndtKy3gaRxOlzji94/yrNgQLe45/1ZgExj0BaVozbXD+oWD8E6MCLvTs+YWzmn315mQOXGCcw==",
+      "path": "nett/0.15.0",
+      "hashPath": "nett.0.15.0.nupkg.sha512"
+    }
+  }
+}
