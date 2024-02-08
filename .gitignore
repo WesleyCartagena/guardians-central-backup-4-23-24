@@ -36,8 +36,8 @@ yarn-error.log*
 
 # Visual Studio
 /.vs
-/bin
-/obj
+/database/bin
+/database/obj
 
 # Rider
 .idea/
