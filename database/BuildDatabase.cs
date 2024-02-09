@@ -22,10 +22,10 @@ class Program{
         string DestinationFolderPath = table.Get<string>("DestinationFolderPath");
 
         // Gets the Manifest Endpoint
-        string manifestEndpoint = await Worker.GetManifestEndpoint(BungieApiRootPath, GetManifestEndpoint);
+        string manifestEndpoint = await ManifestEndpointRetrieval.GetManifestEndpoint(BungieApiRootPath, GetManifestEndpoint);
         Console.WriteLine(manifestEndpoint);
 
         // Recieves Manifest Endpoint and tries to download the manifest zip folder
-        await Worker.DownloadManifest(BungieRootPath:BungieRootPath, ManifestEndpoint:manifestEndpoint, DestinationFolderPath:DestinationFolderPath);
+        await ManifestZipDownloader.DownloadManifest(BungieRootPath:BungieRootPath, ManifestEndpoint:manifestEndpoint, DestinationFolderPath:DestinationFolderPath);
     }
 }

@@ -3,7 +3,7 @@ using System.Net.Http;
 using System.IO;
 using System.Threading.Tasks;
 using System.Text.Json;
-// Figure out what to do with all the return nulls. That is terrible for debugging
+
 public class ManifestResponse{
     public class mobileWorldContentPaths{
         public string? en { get; set; }
@@ -18,9 +18,8 @@ public class ManifestResponse{
         public string? ErrorStatus { get; set; }
     }
 }
-public class Worker{
-    // Method to get the Manifest Endpoint
-    public static async Task <string> GetManifestEndpoint(string BungieApiRootPath, string GetManifestEndpoint){
+public class ManifestEndpointRetrieval{
+        public static async Task <string> GetManifestEndpoint(string BungieApiRootPath, string GetManifestEndpoint){
         // Builds Manifest URL
         string getManifestURL = BungieApiRootPath + GetManifestEndpoint;
 
@@ -57,34 +56,5 @@ public class Worker{
             }
         }
         return null;
-    }
-    
-    // Method to Download Manifest URL
-    public static async Task DownloadManifest(string BungieRootPath, string ManifestEndpoint, string DestinationFolderPath){
-        // Builds the Download URL for Manifest
-        string downloadManifestURL = BungieRootPath + ManifestEndpoint;
-        string destinationFolderPath = DestinationFolderPath; // Move this to config file
-        string fileName = "Sqlite3Destiny2DB.zip"; // Move to config file
-        Console.WriteLine(downloadManifestURL);
-        using (HttpClient httpClient = new HttpClient()){
-            try{
-                HttpResponseMessage downloadManifestResponse = await httpClient.GetAsync(downloadManifestURL);
-                if (downloadManifestResponse.IsSuccessStatusCode){
-                    byte[] fileContent = await downloadManifestResponse.Content.ReadAsByteArrayAsync();
-
-                    // Combine the destination folder path and file name
-                    string filePath = Path.Combine(destinationFolderPath, fileName);
-
-                    // Write the file content to the specified file
-                    File.WriteAllBytes(filePath, fileContent);
-
-                    Console.WriteLine($"File downloaded and saved to: {filePath}");
-                }else{
-                    Console.WriteLine($"HTTP Status Code: {downloadManifestResponse.StatusCode}");
-                }
-            }catch (HttpRequestException ex){
-                Console.WriteLine($"Error: {ex.Message}");
-            }
-        }
     }
 }
