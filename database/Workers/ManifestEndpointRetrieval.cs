@@ -34,27 +34,24 @@ public class ManifestEndpointRetrieval{
                     string manifestResponseAsString = await getManifestResponse.Content.ReadAsStringAsync();
 
                     // Deserailizes manifest Response and build a C# Object from it
-                    ManifestResponse.RootObject manifestResponse = JsonSerializer.Deserialize<ManifestResponse.RootObject>(manifestResponseAsString);
+                    ManifestResponse.RootObject? manifestResponse = JsonSerializer.Deserialize<ManifestResponse.RootObject>(manifestResponseAsString);
 
                     // Access and return the Manifest Endpoint
                     // This if statement should be refactored to check status messages not whether or not a variable is null
-                    if (manifestResponse.Response != null && manifestResponse.Response.mobileWorldContentPaths != null){
-                        string englishManifestEndpoint = manifestResponse.Response.mobileWorldContentPaths.en;
+                    if (manifestResponse != null && manifestResponse.Response != null && manifestResponse.Response.mobileWorldContentPaths != null){
+                        string englishManifestEndpoint = manifestResponse.Response!.mobileWorldContentPaths!.en!;
                         return englishManifestEndpoint;
                     }else{
                         throw new ApplicationException("Unable to retrieve MobileWorldContentPaths.");// Not Tested
                     }
-                    return null;
 
                 }else{
                     throw new ApplicationException($"HTTP Status Code: {getManifestResponse.StatusCode}");// Not Tested
                 }
-                return null;
             }catch (HttpRequestException ex){
                 Console.WriteLine($"Error: {ex.Message}");
                 return ex.Message;
             }
         }
-        return null;
     }
 }
