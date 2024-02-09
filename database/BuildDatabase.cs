@@ -20,6 +20,8 @@ class Program{
         string BungieApiRootPath = table.Get<string>("BungieAPIRootPath");
         string GetManifestEndpoint = table.Get<string>("GetManifestEndpoint");
         string DestinationFolderPath = table.Get<string>("DestinationFolderPath");
+        string ManifestZipPath = table.Get<string>("ManifestZipPath");
+        string ExtractionPath = table.Get<string>("ExtractionPath");
 
         // Gets the Manifest Endpoint
         string manifestEndpoint = await ManifestEndpointRetrieval.GetManifestEndpoint(BungieApiRootPath, GetManifestEndpoint);
@@ -27,5 +29,9 @@ class Program{
 
         // Recieves Manifest Endpoint and tries to download the manifest zip folder
         await ManifestZipDownloader.DownloadManifest(BungieRootPath:BungieRootPath, ManifestEndpoint:manifestEndpoint, DestinationFolderPath:DestinationFolderPath);
+
+        ManifestFileExtractor.ExtractingManifest(ZipPath:ManifestZipPath, ExtractPath:ExtractionPath);
+        //Console.WriteLine(ExtractedFilePathList);
+        ExtensionChanger.ChangingFileExtension(ExtractPath:ExtractionPath);
     }
 }

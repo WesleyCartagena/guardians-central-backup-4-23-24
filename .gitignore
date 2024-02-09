@@ -24,7 +24,7 @@ yarn-error.log*
 
 # Database file
 /Sqlite3Destiny2DB.zip
-
+/Extractions/Sqlite3Destiny2DB.sqlite3
 
 # User-specific files
 *.rsuser
