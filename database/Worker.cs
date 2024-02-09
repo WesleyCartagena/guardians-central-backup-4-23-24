@@ -19,28 +19,28 @@ public class ManifestResponse{
     }
 }
 public class Worker{
+    // Method to get the Manifest Endpoint
     public static async Task <string> GetManifestEndpoint(string BungieApiRootPath, string GetManifestEndpoint){
-        // string getManifestURL = "https://www.bungie.net/Platform/Destiny2/Manifest/";
+        // Builds Manifest URL
         string getManifestURL = BungieApiRootPath + GetManifestEndpoint;
 
         using (HttpClient httpClient = new HttpClient()){
             try{
+                // API Call for manifest URL
                 HttpResponseMessage getManifestResponse = await httpClient.GetAsync(getManifestURL);
 
+                // Checks if HTTP Request was sucessfull
                 if (getManifestResponse.IsSuccessStatusCode){
-                    Console.WriteLine(getManifestResponse);
+                    //Converts ManifestResonse to a String
                     string manifestResponseAsString = await getManifestResponse.Content.ReadAsStringAsync();
 
+                    // Deserailizes manifest Response and build a C# Object from it
                     ManifestResponse.RootObject manifestResponse = JsonSerializer.Deserialize<ManifestResponse.RootObject>(manifestResponseAsString);
 
-                    // Log the deserialized object
-                    Console.WriteLine("Deserialized Object:");
-                    Console.WriteLine(JsonSerializer.Serialize(manifestResponse, new JsonSerializerOptions { WriteIndented = true }));
-
-                    // Access and print MobileWorldContentPaths
+                    // Access and return the Manifest Endpoint
+                    // This if statement should be refactored to check status messages not whether or not a variable is null
                     if (manifestResponse.Response != null && manifestResponse.Response.mobileWorldContentPaths != null){
                         string englishManifestEndpoint = manifestResponse.Response.mobileWorldContentPaths.en;
-                        Console.WriteLine(englishManifestEndpoint);
                         return englishManifestEndpoint;
                     }else{
                         throw new ApplicationException("Unable to retrieve MobileWorldContentPaths.");// Not Tested
@@ -59,7 +59,9 @@ public class Worker{
         return null;
     }
     
+    // Method to Download Manifest URL
     public static async Task DownloadManifest(string BungieRootPath, string ManifestEndpoint, string DestinationFolderPath){
+        // Builds the Download URL for Manifest
         string downloadManifestURL = BungieRootPath + ManifestEndpoint;
         string destinationFolderPath = DestinationFolderPath; // Move this to config file
         string fileName = "Sqlite3Destiny2DB.zip"; // Move to config file
