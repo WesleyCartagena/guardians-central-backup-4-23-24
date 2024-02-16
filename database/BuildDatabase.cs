@@ -29,6 +29,7 @@ class Program{
         string Database = table.Get<string>("Database");
         Console.WriteLine(Database);
         string UserId = table.Get<string>("UserId");
+        string Password = table.Get<string>("Password");
         Console.WriteLine(UserId);
         Console.WriteLine(Sqlite3DbPath);
 
@@ -43,6 +44,6 @@ class Program{
         //Console.WriteLine(ExtractedFilePathList);
         ExtensionChanger.ChangingFileExtension(ExtractPath:ExtractionPath);
 
-        ManifestTableExtracter.DataMigration(Sqlite3DbPath:Sqlite3DbPath, Server:Server, Database:Database, UserId:UserId);
+        ManifestTableExtracter.DataMigration(Sqlite3DbPath:Sqlite3DbPath, Server:Server, Database:Database, UserId:UserId, Password:Password);
     }
 }
