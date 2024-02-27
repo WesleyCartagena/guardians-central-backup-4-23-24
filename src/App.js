@@ -1,12 +1,14 @@
 import { Routes, Route } from "react-router-dom"
-import Home from './pages/Home/Home'
-import Crucible from './pages/Crucible/Crucible'
-import Vanguard from './pages/Vanguard/Vanguard'
-import Gambit from './pages/Gambit/Gambit'  
-import Layout from './components/Layout/Layout'
+import Home from './pages/Home'
+import Crucible from './pages/Crucible'
+import Vanguard from './pages/Vanguard'
+import Gambit from './pages/Gambit'  
+import Layout from './components/ui/Layout'
+
 import './App.scss';
 
 function App () {
+    
     return (
         <>
            <Routes>

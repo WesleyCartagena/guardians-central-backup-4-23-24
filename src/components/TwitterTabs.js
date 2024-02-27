@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from 'react';
-import TwitterWidget from "../TwitterWidget/TwitterWidget"
+import TwitterWidget from "./TwitterWidget"
 import Card from 'react-bootstrap/Card';
 import Nav from 'react-bootstrap/Nav';
 import Spinner from 'react-bootstrap/Spinner';
