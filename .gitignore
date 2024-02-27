@@ -46,3 +46,6 @@ yarn-error.log*
 
 # Server 
 /server/node_modules
+/server/config.toml
+
+/config.toml
