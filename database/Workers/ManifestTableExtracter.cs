@@ -21,10 +21,10 @@ public class ManifestTableExtracter{
                 // }
                 // Create MS SQL Server connection
                 string sqlConnectionString = $"Server={Server};Database={Database};TrustServerCertificate=True;Uid={UserId};Pwd={Password};";
-                Console.WriteLine(sqlConnectionString);
-                using (SqlConnection mysqlConnection = new SqlConnection(sqlConnectionString)){
+                //Console.WriteLine(sqlConnectionString);
+                using (SqlConnection msSqlConnection = new SqlConnection(sqlConnectionString)){
                     try{
-                        mysqlConnection.Open();
+                        msSqlConnection.Open();
                         // loop through all tables and their rows
                         foreach (string tableName in tableNames){
                             // DestinyHistoricalStatsDefinition 
@@ -36,14 +36,14 @@ public class ManifestTableExtracter{
                                             byte[] jsonBytes = (byte[])reader["Json"];
                                             string jsonString = Encoding.UTF8.GetString(jsonBytes);
 
-                                            if (TableExists(connection: mysqlConnection, tableName: tableName) == false){
-                                                using (SqlCommand createTableCommand = new SqlCommand($"CREATE TABLE {tableName} ([key] VARCHAR(MAX), Json VARCHAR(MAX))", mysqlConnection)){
+                                            if (TableExists(connection: msSqlConnection, tableName: tableName) == false){
+                                                using (SqlCommand createTableCommand = new SqlCommand($"CREATE TABLE {tableName} ([key] VARCHAR(MAX), Json VARCHAR(MAX))", msSqlConnection)){
                                                     createTableCommand.ExecuteNonQuery();
                                                 }
                                             }
                                             
                                             // MySQL query
-                                            using (SqlCommand sqlCommand = new SqlCommand($"INSERT INTO {tableName} ([key], Json) VALUES (@key, @Json)", mysqlConnection)){
+                                            using (SqlCommand sqlCommand = new SqlCommand($"INSERT INTO {tableName} ([key], Json) VALUES (@key, @Json)", msSqlConnection)){
                                                 // Set parameter values and execute query
                                                 sqlCommand.Parameters.AddWithValue("@key", key);
                                                 sqlCommand.Parameters.AddWithValue("@Json", jsonBytes);
@@ -65,14 +65,14 @@ public class ManifestTableExtracter{
                                             byte[] jsonBytes = (byte[])reader["Json"];
                                             string jsonString = Encoding.UTF8.GetString(jsonBytes);
                                             
-                                            if(TableExists(connection:mysqlConnection, tableName:tableName) == false){
-                                                using (SqlCommand createTableCommand = new SqlCommand($"CREATE TABLE {tableName} (Id INT, Json VARCHAR(MAX))", mysqlConnection)) {
+                                            if(TableExists(connection:msSqlConnection, tableName:tableName) == false){
+                                                using (SqlCommand createTableCommand = new SqlCommand($"CREATE TABLE {tableName} (Id INT, Json VARCHAR(MAX))", msSqlConnection)) {
                                                     createTableCommand.ExecuteNonQuery();
                                                 }
                                             }
 
                                             // MySQL query
-                                            using (SqlCommand sqlCommand = new SqlCommand($"INSERT INTO {tableName} (Id, Json) VALUES (@Id, @Json)", mysqlConnection)){
+                                            using (SqlCommand sqlCommand = new SqlCommand($"INSERT INTO {tableName} (Id, Json) VALUES (@Id, @Json)", msSqlConnection)){
                                                 // Set parameter values and execute query
                                                 sqlCommand.Parameters.AddWithValue("@Id", Id);
                                                 sqlCommand.Parameters.AddWithValue("@Json", jsonBytes);
