@@ -38,16 +38,7 @@
     .accordian-letters{
         font-size: 18px;
     }
-    .accordian-icons #raid-icon{
-        width: 35px;
-    }
-    .accordian-icons #dungeon-icon{
-        width: 35px;
-    }
-    .accordian-icons #exotic-quest-icon{
-        width: 35px;
-    }
-    .accordian-icons #nightfall-icon{
+    .accordian-icons{
         width: 35px;
     }
     .accordion-button::after {
@@ -67,16 +58,7 @@
     .accordian-letters{
         font-size: 30px;
     }
-    .accordian-icons #raid-icon{
-        width: 50px;
-    }
-    .accordian-icons #dungeon-icon{
-        width: 50px;
-    }
-    .accordian-icons #exotic-quest-icon{
-        width: 50px;
-    }
-    .accordian-icons #nightfall-icon{
+    .accordian-icons{
         width: 50px;
     }
 }
@@ -85,34 +67,16 @@
     .accordian-letters{
         font-size: 32px;
     }
-    .accordian-icons #raid-icon{
-        width: 60px;
-    }
-    .accordian-icons #dungeon-icon{
-        width: 60px;
-    }
-    .accordian-icons #exotic-quest-icon{
-        width: 60px;
-    }
-    .accordian-icons #nightfall-icon{
+    .accordian-icons{
         width: 60px;
     }
 }
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
     .accordian-letters{
-        font-size: 36px;
+        font-size: 34px;
     }
-    .accordian-icons #raid-icon{
-        width: 60px;
-    }
-    .accordian-icons #dungeon-icon{
-        width: 60px;
-    }
-    .accordian-icons #exotic-quest-icon{
-        width: 60px;
-    }
-    .accordian-icons #nightfall-icon{
+    .accordian-icons{
         width: 60px;
     }
 }
