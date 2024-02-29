@@ -3,6 +3,7 @@ import TwitterWidget from "./TwitterWidget"
 import Card from 'react-bootstrap/Card';
 import Nav from 'react-bootstrap/Nav';
 import Spinner from 'react-bootstrap/Spinner';
+import './TwitterTabs.scss'
 
 const TwitterTabs = () => {
     const twitterAccounts = {
@@ -41,7 +42,7 @@ const TwitterTabs = () => {
                 <Nav variant="tabs">
                     {Object.keys(twitterAccounts).map((accountName) => (
                         <React.Fragment key={twitterAccounts[accountName].id}>
-                        <Nav.Item>
+                        <Nav.Item className='nav-item-twitter-tabs'>
                             <Nav.Link key={twitterAccounts[accountName].id} style={{color:'#b48608'}} active={activeTab === accountName} onClick={() => handleTabSelect(accountName)}>{accountName}</Nav.Link>
                         </Nav.Item>
                         </React.Fragment> 
