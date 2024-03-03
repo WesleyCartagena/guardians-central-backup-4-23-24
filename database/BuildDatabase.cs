@@ -1,9 +1,7 @@
-// TO-DO
-// Surround methods with try blocks
-// Maybe remove worker try blocks and just use external ones
-// Research some file structures
-// Connect to SQLLite DB and extract tables and transfer them to MySqlServer
 using Nett;
+using System;
+using System.IO;
+using Serilog;
 
 
 class Program{
@@ -11,6 +9,13 @@ class Program{
 
         // Gets all the data from TOML File 
         var table = Toml.ReadFile("config.toml");
+
+        string LoggerPath = table.Get<string>("LoggerPath");
+        Log.Logger = new LoggerConfiguration()
+            .MinimumLevel.Debug()
+            .WriteTo.Console()
+            .WriteTo.File($"{LoggerPath}Log_{DateTime.Now:yyyyMMdd_HHmmss}.txt", rollingInterval: RollingInterval.Day)
+            .CreateLogger();
 
         // Converts TOML File data to strings
         string BungieRootPath = table.Get<string>("BungieRootPath");
@@ -33,49 +38,36 @@ class Program{
         string manifestEndpoint = "";
         try{
             manifestEndpoint = await ManifestEndpointRetrieval.GetManifestEndpoint(BungieApiRootPath, GetManifestEndpoint);
-            Console.WriteLine(manifestEndpoint);
+            Log.Information(manifestEndpoint);
         }catch(Exception ex){
-            Console.WriteLine(new{
-                Error= ex, 
-                Message = "Failed to Get Manifest Endpoint"
-            });
+            Log.Error(ex, "Failed to Get Manifest Endpoint");
         }
 
         // Recieves Manifest Endpoint and tries to download the manifest zip folder
         try{
             await ManifestZipDownloader.DownloadManifest(BungieRootPath:BungieRootPath, ManifestEndpoint:manifestEndpoint, DestinationFolderPath:DestinationFolderPath);
         }catch(Exception ex){
-            Console.WriteLine(new{
-                Error= ex, 
-                Message = "Failed to Download Manifest"
-            });
+            Log.Error(ex, "Failed to Download Manifest");
         }
 
         try{
             ManifestFileExtractor.ExtractingManifest(ZipPath:ManifestZipPath, ExtractPath:ExtractionPath);
         }catch(Exception ex){
-            Console.WriteLine(new{
-                Error= ex, 
-                Message = "Failed to Extract Manifest"
-            });
+            Log.Error(ex, "Failed to Extract Manifest");
         }
 
         try{
-        ExtensionChanger.ChangingFileExtension(ExtractPath:ExtractionPath);
+            ExtensionChanger.ChangingFileExtension(ExtractPath:ExtractionPath);
         }catch(Exception ex){
-            Console.WriteLine(new{
-                Error= ex, 
-                Message = "Failed to Change Manifest File Extension"
-            });
+            Log.Error(ex, "Failed to Change Manifest File Extension");
         }
 
         try{
             ManifestTableExtracter.DataMigration(Sqlite3DbPath:Sqlite3DbPath, Server:Server, Database:Database, UserId:UserId, Password:Password);
         }catch(Exception ex){
-            Console.WriteLine(new{
-                Error= ex, 
-                Message = "Failed to Migrate Data"
-            });
+            Log.Error(ex, "Failed to Migrate Data");
         }
+
+        Log.CloseAndFlush();  
     }
 }
