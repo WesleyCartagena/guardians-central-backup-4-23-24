@@ -1,6 +1,3 @@
-using System;
-using System.IO.Compression;
-
 public class ExtensionChanger{
     public static void ChangingFileExtension(string ExtractPath){
         // Get a list of all files in the extraction directory

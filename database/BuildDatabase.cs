@@ -3,10 +3,6 @@
 // Maybe remove worker try blocks and just use external ones
 // Research some file structures
 // Connect to SQLLite DB and extract tables and transfer them to MySqlServer
-using System;
-using System.Net.Http;
-using System.Threading.Tasks;
-using System.Text.Json;
 using Nett;
 
 

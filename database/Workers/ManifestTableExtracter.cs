@@ -1,8 +1,5 @@
-using System;
-using System.Collections.Generic;
 using System.Data.SQLite;
 using Microsoft.Data.SqlClient;
-using Newtonsoft.Json;
 using System.Text;
 
 public class ManifestTableExtracter{

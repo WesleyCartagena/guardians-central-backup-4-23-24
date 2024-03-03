@@ -1,9 +1,3 @@
-using System;
-using System.Net.Http;
-using System.IO;
-using System.Threading.Tasks;
-using System.Text.Json;
-
 public class ManifestZipDownloader{    
     public static async Task DownloadManifest(string BungieRootPath, string ManifestEndpoint, string DestinationFolderPath){
         // Builds the Download URL for Manifest

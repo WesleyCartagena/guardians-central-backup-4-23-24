@@ -1,7 +1,3 @@
-using System;
-using System.Net.Http;
-using System.IO;
-using System.Threading.Tasks;
 using System.Text.Json;
 
 public class ManifestResponse{
