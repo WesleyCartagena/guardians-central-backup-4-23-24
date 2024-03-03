@@ -30,16 +30,52 @@ class Program{
         Console.WriteLine(Sqlite3DbPath);
 
         // Gets the Manifest Endpoint
-        string manifestEndpoint = await ManifestEndpointRetrieval.GetManifestEndpoint(BungieApiRootPath, GetManifestEndpoint);
-        //Console.WriteLine(manifestEndpoint);
+        string manifestEndpoint = "";
+        try{
+            manifestEndpoint = await ManifestEndpointRetrieval.GetManifestEndpoint(BungieApiRootPath, GetManifestEndpoint);
+            Console.WriteLine(manifestEndpoint);
+        }catch(Exception ex){
+            Console.WriteLine(new{
+                Error= ex, 
+                Message = "Failed to Get Manifest Endpoint"
+            });
+        }
 
         // Recieves Manifest Endpoint and tries to download the manifest zip folder
-        await ManifestZipDownloader.DownloadManifest(BungieRootPath:BungieRootPath, ManifestEndpoint:manifestEndpoint, DestinationFolderPath:DestinationFolderPath);
+        try{
+            await ManifestZipDownloader.DownloadManifest(BungieRootPath:BungieRootPath, ManifestEndpoint:manifestEndpoint, DestinationFolderPath:DestinationFolderPath);
+        }catch(Exception ex){
+            Console.WriteLine(new{
+                Error= ex, 
+                Message = "Failed to Download Manifest"
+            });
+        }
 
-        ManifestFileExtractor.ExtractingManifest(ZipPath:ManifestZipPath, ExtractPath:ExtractionPath);
-        //Console.WriteLine(ExtractedFilePathList);
+        try{
+            ManifestFileExtractor.ExtractingManifest(ZipPath:ManifestZipPath, ExtractPath:ExtractionPath);
+        }catch(Exception ex){
+            Console.WriteLine(new{
+                Error= ex, 
+                Message = "Failed to Extract Manifest"
+            });
+        }
+
+        try{
         ExtensionChanger.ChangingFileExtension(ExtractPath:ExtractionPath);
+        }catch(Exception ex){
+            Console.WriteLine(new{
+                Error= ex, 
+                Message = "Failed to Change Manifest File Extension"
+            });
+        }
 
-        ManifestTableExtracter.DataMigration(Sqlite3DbPath:Sqlite3DbPath, Server:Server, Database:Database, UserId:UserId, Password:Password);
+        try{
+            ManifestTableExtracter.DataMigration(Sqlite3DbPath:Sqlite3DbPath, Server:Server, Database:Database, UserId:UserId, Password:Password);
+        }catch(Exception ex){
+            Console.WriteLine(new{
+                Error= ex, 
+                Message = "Failed to Migrate Data"
+            });
+        }
     }
 }
