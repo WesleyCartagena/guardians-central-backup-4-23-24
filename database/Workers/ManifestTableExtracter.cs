@@ -31,16 +31,23 @@ public class ManifestTableExtracter{
                             if (tableName == "DestinyHistoricalStatsDefinition"){
                                 using (SQLiteCommand sqliteCommand = new SQLiteCommand($"SELECT * FROM {tableName}", sqliteConnection)){
                                     using (SQLiteDataReader reader = sqliteCommand.ExecuteReader()){
+                                        bool doesTableExist = TableExists(connection:msSqlConnection, tableName:tableName);
+                                        if(doesTableExist == false){
+                                            using (SqlCommand createTableCommand = new SqlCommand($"CREATE TABLE {tableName} ([key] VARCHAR(MAX), Json VARCHAR(MAX))", msSqlConnection)) {
+                                                createTableCommand.ExecuteNonQuery();
+                                            }
+                                        }else if (doesTableExist == true){
+                                            using (SqlCommand deleteTableCommand = new SqlCommand($"DROP TABLE {tableName}", msSqlConnection)){
+                                                deleteTableCommand.ExecuteNonQuery();
+                                            }
+                                            using (SqlCommand createTableCommand = new SqlCommand($"CREATE TABLE {tableName} ([key] VARCHAR(MAX), Json VARCHAR(MAX))", msSqlConnection)){
+                                                createTableCommand.ExecuteNonQuery();
+                                            }
+                                        }     
                                         while (reader.Read()){
                                             string key = (string)reader["key"];
                                             byte[] jsonBytes = (byte[])reader["Json"];
                                             string jsonString = Encoding.UTF8.GetString(jsonBytes);
-
-                                            if (TableExists(connection: msSqlConnection, tableName: tableName) == false){
-                                                using (SqlCommand createTableCommand = new SqlCommand($"CREATE TABLE {tableName} ([key] VARCHAR(MAX), Json VARCHAR(MAX))", msSqlConnection)){
-                                                    createTableCommand.ExecuteNonQuery();
-                                                }
-                                            }
                                             
                                             // MySQL query
                                             using (SqlCommand sqlCommand = new SqlCommand($"INSERT INTO {tableName} ([key], Json) VALUES (@key, @Json)", msSqlConnection)){
@@ -58,18 +65,25 @@ public class ManifestTableExtracter{
                                 // SQLite query
                                 using (SQLiteCommand sqliteCommand = new SQLiteCommand($"SELECT * FROM {tableName}", sqliteConnection)){
                                     using (SQLiteDataReader reader = sqliteCommand.ExecuteReader()){
+                                        bool doesTableExist = TableExists(connection:msSqlConnection, tableName:tableName);
+                                        if(doesTableExist == false){
+                                            using (SqlCommand createTableCommand = new SqlCommand($"CREATE TABLE {tableName} (Id INT, Json VARCHAR(MAX))", msSqlConnection)) {
+                                                createTableCommand.ExecuteNonQuery();
+                                            }
+                                        }else if (doesTableExist == true){
+                                            using (SqlCommand deleteTableCommand = new SqlCommand($"DROP TABLE {tableName}", msSqlConnection)){
+                                                deleteTableCommand.ExecuteNonQuery();
+                                            }
+                                            using (SqlCommand createTableCommand = new SqlCommand($"CREATE TABLE {tableName} (Id INT, Json VARCHAR(MAX))", msSqlConnection)){
+                                                createTableCommand.ExecuteNonQuery();
+                                            }
+                                        }                                        
                                         // Read and process data
                                         while (reader.Read()){
                                             // Assuming 'column1' and 'column2' are column names in SQLite
                                             int Id = Convert.ToInt32(reader["Id"]);
                                             byte[] jsonBytes = (byte[])reader["Json"];
                                             string jsonString = Encoding.UTF8.GetString(jsonBytes);
-                                            
-                                            if(TableExists(connection:msSqlConnection, tableName:tableName) == false){
-                                                using (SqlCommand createTableCommand = new SqlCommand($"CREATE TABLE {tableName} (Id INT, Json VARCHAR(MAX))", msSqlConnection)) {
-                                                    createTableCommand.ExecuteNonQuery();
-                                                }
-                                            }
 
                                             // MySQL query
                                             using (SqlCommand sqlCommand = new SqlCommand($"INSERT INTO {tableName} (Id, Json) VALUES (@Id, @Json)", msSqlConnection)){
