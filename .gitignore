@@ -49,3 +49,6 @@ yarn-error.log*
 /server/config.toml
 
 /config.toml
+
+/oauth/bin
+/oauth/obj
