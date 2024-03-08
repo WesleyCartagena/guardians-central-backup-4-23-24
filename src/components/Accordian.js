@@ -24,7 +24,7 @@ const HomeAccordian = () =>{
               </div>
             </div>
           </Accordion.Header>
-          <Accordion.Body>
+          <Accordion.Body className="p-0 h-100">
             <WeeklyRotators/>
           </Accordion.Body>
         </Accordion.Item>

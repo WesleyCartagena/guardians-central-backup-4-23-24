@@ -1,6 +1,7 @@
 
 import Carousel from 'react-bootstrap/Carousel';
 import './WeeklyRotators.scss'
+import { useEffect, useState } from 'react';
 
 const renderItems = (list) => {
     const result = []
@@ -10,7 +11,43 @@ const renderItems = (list) => {
     return result
 }
 
+const renderText = (list) => {
+    const result = []
+    for(let i = 0; i < list.length; i++){
+        let key = Object.keys(list[i])[0];
+        let value = list[i][key];
+        result.push(
+            <div>
+                <img className='mod-icon' key={i} src={value} alt={`Item ${i + 1}`}></img>
+                <span>{key}</span>
+            </div>
+        );
+    }
+    return result
+}
+
+
 const WeeklyRotators = () => {
+
+    const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+    useEffect(() => {
+      const handleResize = () => {
+        setIsSmallScreen(window.innerWidth < 992);
+      };
+  
+      // Initial check on mount
+      handleResize();
+  
+      // Add event listener for window resize
+      window.addEventListener('resize', handleResize);
+  
+      // Clean up the event listener on component unmount
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
+    }, []);
+
     // Raid lists
     let raidWeaponList = [
         "https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg",
@@ -71,25 +108,50 @@ const WeeklyRotators = () => {
     let exoticQuestCatalystList = ["https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg","https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg"]
 
     // Nightfall lists
-    let weeklyNightfallLoot = []
-    let nightfallHeroMods = []
-    let nightfallLegendMods = []
-    let nightfallMasterMods = []
+    let weeklyNightfallLoot = ["https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg","https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg"]
+    let nightfallHeroMods = [
+        {'Empath':"https://www.bungie.net/common/destiny2_content/icons/6c9052b8fcaea41c2c858c39cf504687.png"},
+        {'Empath':"https://www.bungie.net/common/destiny2_content/icons/6c9052b8fcaea41c2c858c39cf504687.png"},
+        {'Empath':"https://www.bungie.net/common/destiny2_content/icons/6c9052b8fcaea41c2c858c39cf504687.png"},
+        {'Empath':"https://www.bungie.net/common/destiny2_content/icons/6c9052b8fcaea41c2c858c39cf504687.png"},
+        {'Empath':"https://www.bungie.net/common/destiny2_content/icons/6c9052b8fcaea41c2c858c39cf504687.png"},
+        {'Empath':"https://www.bungie.net/common/destiny2_content/icons/6c9052b8fcaea41c2c858c39cf504687.png"}
+
+    ]
+    let nightfallLegendMods = [
+        {'Empath':"https://www.bungie.net/common/destiny2_content/icons/6c9052b8fcaea41c2c858c39cf504687.png"},
+        {'Empath':"https://www.bungie.net/common/destiny2_content/icons/6c9052b8fcaea41c2c858c39cf504687.png"},
+        {'Empath':"https://www.bungie.net/common/destiny2_content/icons/6c9052b8fcaea41c2c858c39cf504687.png"},
+        {'Empath':"https://www.bungie.net/common/destiny2_content/icons/6c9052b8fcaea41c2c858c39cf504687.png"},
+        {'Empath':"https://www.bungie.net/common/destiny2_content/icons/6c9052b8fcaea41c2c858c39cf504687.png"},
+        {'Empath':"https://www.bungie.net/common/destiny2_content/icons/6c9052b8fcaea41c2c858c39cf504687.png"}
+    ]
+    let nightfallMasterMods = [
+        {'Empath':"https://www.bungie.net/common/destiny2_content/icons/6c9052b8fcaea41c2c858c39cf504687.png"},
+        {'Empath':"https://www.bungie.net/common/destiny2_content/icons/6c9052b8fcaea41c2c858c39cf504687.png"},
+        {'Empath':"https://www.bungie.net/common/destiny2_content/icons/6c9052b8fcaea41c2c858c39cf504687.png"},
+        {'Empath':"https://www.bungie.net/common/destiny2_content/icons/6c9052b8fcaea41c2c858c39cf504687.png"},
+        {'Empath':"https://www.bungie.net/common/destiny2_content/icons/6c9052b8fcaea41c2c858c39cf504687.png"},
+        {'Empath':"https://www.bungie.net/common/destiny2_content/icons/6c9052b8fcaea41c2c858c39cf504687.png"}
+    ]
 
     return(
           <Carousel>
             <Carousel.Item interval={1000000}>
-                <img className="img-fluid" src="https://www.bungie.net/img/destiny_content/pgcr/raid_kings_fall.jpg"/>
-                <Carousel.Caption className='top-0'>
-                    <h2>Weekly Raid</h2>
-                    <h3>Raid Name</h3>
-                    <div className='info-container d-inline-flex'>
+            <div className='overlay-container'>
+                    <img className="carousel-img-transform" src="https://www.bungie.net/img/destiny_content/pgcr/raid_kings_fall.jpg" alt="Background" />
+                    <div className='overlay'></div>
+                </div>
+                <Carousel.Caption className='top-0 overlay-text fw-bold overflow-auto'>
+                    <h2 className='fw-bold'>Weekly Raid</h2>
+                    <h3 className='fw-bold'>Raid Name</h3>
+                    <div className={`info-container ${isSmallScreen ? 'flex-column' : 'd-inline-flex'}`}>
                         <div className='img-column-container'>
-                            <h5>Weapons</h5>
+                            <h5 className='fw-bold'>Weapons</h5>
                             {renderItems(raidWeaponList)}
                         </div>
                         <div className='img-column-container'>
-                            <h5>Armor</h5>
+                            <h5 className='fw-bold'>Armor</h5>
                             <div className='Titan'>
                                 {renderItems(raidTitanArmorList)}
                             </div>
@@ -101,24 +163,27 @@ const WeeklyRotators = () => {
                             </div>
                         </div>
                         <div className='img-column-container'>
-                            <h5>Cosmetics</h5>
+                            <h5 className='fw-bold'>Cosmetics</h5>
                              {renderItems(raidCosmeticList)}
                         </div>
                     </div>
                 </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item interval={1000000}>
-                <img className="img-fluid" src="https://www.bungie.net/img/destiny_content/pgcr/raid_kings_fall.jpg"/>
-                <Carousel.Caption className='top-0'>
-                    <h2>Weekly Dungeon</h2>
-                    <h3>Dungeon Name</h3>
-                    <div className='info-container d-inline-flex'>
+            <div className='overlay-container'>
+                    <img className="carousel-img-transform" src="https://www.bungie.net/img/destiny_content/pgcr/raid_kings_fall.jpg" alt="Background" />
+                    <div className='overlay'></div>
+                </div>
+                <Carousel.Caption className='top-0 overlay-text fw-bold overflow-auto'>
+                    <h2 className='fw-bold'>Weekly Dungeon</h2>
+                    <h3 className='fw-bold'>Dungeon Name</h3>
+                    <div className={`info-container ${isSmallScreen ? 'flex-column' : 'd-inline-flex'}`}>
                         <div className='img-column-container'>
-                            <h5>Weapons</h5>
+                            <h5 className='fw-bold'>Weapons</h5>
                             {renderItems(dungeonWeaponList)}
                         </div>
                         <div className='img-column-container'>
-                            <h5>Armor</h5>
+                            <h5 className='fw-bold'>Armor</h5>
                             <div className='Titan'>
                                 {renderItems(dungeonTitanArmorList)}
                             </div>
@@ -130,24 +195,27 @@ const WeeklyRotators = () => {
                             </div>
                         </div>
                         <div className='img-column-container'>
-                            <h5>Cosmetics</h5>
+                            <h5 className='fw-bold'>Cosmetics</h5>
                              {renderItems(dungeonCosmeticList)}
                         </div>
                     </div>
                 </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item interval={1000000}>
-                <img className="img-fluid" src="https://www.bungie.net/img/destiny_content/pgcr/raid_kings_fall.jpg"/>
-                <Carousel.Caption className='top-0'>
-                    <h2>Weekly Exotic Quest</h2>
-                    <h3>Quest Name</h3>
-                    <div className='info-container d-inline-flex'>
+            <div className='overlay-container'>
+                    <img className="carousel-img-transform" src="https://www.bungie.net/img/destiny_content/pgcr/raid_kings_fall.jpg" alt="Background" />
+                    <div className='overlay'></div>
+                </div>
+                <Carousel.Caption className='top-0 overlay-text fw-bold overflow-auto'>
+                    <h2 className='fw-bold'>Weekly Exotic Quest</h2>
+                    <h3 className='fw-bold'>Quest Name</h3>
+                    <div className={`info-container ${isSmallScreen ? 'flex-column' : 'd-inline-flex'}`}>
                         <div className='img-column-container'>
-                            <h5>Weapons</h5>
+                            <h5 className='fw-bold'>Weapons</h5>
                             {renderItems(exoticQuestWeaponList)}
                         </div>
                         <div className='img-column-container'>
-                            <h5>Armor</h5>
+                            <h5 className='fw-bold'>Armor</h5>
                             <div className='Titan'>
                                 {renderItems(exoticQuestTitanArmorList)}
                             </div>
@@ -159,104 +227,38 @@ const WeeklyRotators = () => {
                             </div>
                         </div>
                         <div className='img-column-container'>
-                            <h5>Catalyst</h5>
+                            <h5 className='fw-bold'>Catalyst</h5>
                              {renderItems(exoticQuestCatalystList)}
                         </div>
                     </div>
                 </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item interval={1000000}>
-                <img className="img-fluid" src="https://www.bungie.net/img/destiny_content/pgcr/raid_kings_fall.jpg"/>
-                <Carousel.Caption className='top-0'>
-                    <h2>Weekly Nightfall</h2>
-                    <h3>Nightfall Name</h3>
-                    <div className='info-container d-inline-flex'>
+                <div className='overlay-container'>
+                    <img className="carousel-img-transform" src="https://www.bungie.net/img/destiny_content/pgcr/raid_kings_fall.jpg" alt="Background" />
+                    <div className='overlay'></div>
+                </div>
+                <Carousel.Caption className='top-0 overlay-text fw-bold overflow-auto'>
+                    <h2 className='fw-bold'>Weekly Nightfall</h2>
+                    <h3 className='fw-bold'>Nightfall Name</h3>
+                    <div className='info-container d-inline-flex px-2'>
                         <div className='mods-column-container'>
-                            <h5>Weekly Loot</h5>
-                            {renderItems(exoticQuestCatalystList)}
+                            <h5 className='fw-bold'>Weekly Loot</h5>
+                            {renderItems(weeklyNightfallLoot)}
                         </div>
                     </div>
-                    <div className='info-container d-inline-flex'>
-                        <div className='mods-column-container d-flex flex-column'>
-                            <h5>Hero Mods</h5>
-                            <div>
-                                <img className='mod-icon' src="https://www.bungie.net/common/destiny2_content/icons/6c9052b8fcaea41c2c858c39cf504687.png"></img>
-                                <span>Empath</span>
-                            </div>
-                            <div>
-                                <img className='mod-icon' src="https://www.bungie.net/common/destiny2_content/icons/6c9052b8fcaea41c2c858c39cf504687.png"></img>
-                                <span>Empath</span>
-                            </div>
-                            <div>
-                                <img className='mod-icon' src="https://www.bungie.net/common/destiny2_content/icons/6c9052b8fcaea41c2c858c39cf504687.png"></img>
-                                <span>Empath</span>
-                            </div>
-                            <div>
-                                <img className='mod-icon' src="https://www.bungie.net/common/destiny2_content/icons/6c9052b8fcaea41c2c858c39cf504687.png"></img>
-                                <span>Empath</span>
-                            </div>
-                            <div>
-                                <img className='mod-icon' src="https://www.bungie.net/common/destiny2_content/icons/6c9052b8fcaea41c2c858c39cf504687.png"></img>
-                                <span>Empath</span>
-                            </div>
-                            <div>
-                                <img className='mod-icon' src="https://www.bungie.net/common/destiny2_content/icons/6c9052b8fcaea41c2c858c39cf504687.png"></img>
-                                <span>Empath</span>
-                            </div>
+                    <div className='info-container d-inline-flex' >
+                        <div className='mods-column-container d-flex flex-column px-2'>
+                            <h5 className='fw-bold'>Hero Mods</h5>
+                            {renderText(nightfallHeroMods)}
                         </div>
-                        <div className='mods-column-container d-flex flex-column'>
-                            <h5>Legend Mods</h5>
-                            <div>
-                                <img className='mod-icon' src="https://www.bungie.net/common/destiny2_content/icons/6c9052b8fcaea41c2c858c39cf504687.png"></img>
-                                <span>Empath</span>
-                            </div>
-                            <div>
-                                <img className='mod-icon' src="https://www.bungie.net/common/destiny2_content/icons/6c9052b8fcaea41c2c858c39cf504687.png"></img>
-                                <span>Empath</span>
-                            </div>
-                            <div>
-                                <img className='mod-icon' src="https://www.bungie.net/common/destiny2_content/icons/6c9052b8fcaea41c2c858c39cf504687.png"></img>
-                                <span>Empath</span>
-                            </div>
-                            <div>
-                                <img className='mod-icon' src="https://www.bungie.net/common/destiny2_content/icons/6c9052b8fcaea41c2c858c39cf504687.png"></img>
-                                <span>Empath</span>
-                            </div>
-                            <div>
-                                <img className='mod-icon' src="https://www.bungie.net/common/destiny2_content/icons/6c9052b8fcaea41c2c858c39cf504687.png"></img>
-                                <span>Empath</span>
-                            </div>
-                            <div>
-                                <img className='mod-icon' src="https://www.bungie.net/common/destiny2_content/icons/6c9052b8fcaea41c2c858c39cf504687.png"></img>
-                                <span>Empath</span>
-                            </div>
+                        <div className='mods-column-container d-flex flex-column px-2'>
+                            <h5 className='fw-bold'>Legend Mods</h5>
+                            {renderText(nightfallLegendMods)}
                         </div>
-                        <div className='mods-column-container d-flex flex-column'>
-                            <h5>Master Mods</h5>
-                            <div>
-                                <img className='mod-icon' src="https://www.bungie.net/common/destiny2_content/icons/6c9052b8fcaea41c2c858c39cf504687.png"></img>
-                                <span>Empath</span>
-                            </div>
-                            <div>
-                                <img className='mod-icon' src="https://www.bungie.net/common/destiny2_content/icons/6c9052b8fcaea41c2c858c39cf504687.png"></img>
-                                <span>Empath</span>
-                            </div>
-                            <div>
-                                <img className='mod-icon' src="https://www.bungie.net/common/destiny2_content/icons/6c9052b8fcaea41c2c858c39cf504687.png"></img>
-                                <span>Empath</span>
-                            </div>
-                            <div>
-                                <img className='mod-icon' src="https://www.bungie.net/common/destiny2_content/icons/6c9052b8fcaea41c2c858c39cf504687.png"></img>
-                                <span>Empath</span>
-                            </div>
-                            <div>
-                                <img className='mod-icon' src="https://www.bungie.net/common/destiny2_content/icons/6c9052b8fcaea41c2c858c39cf504687.png"></img>
-                                <span>Empath</span>
-                            </div>
-                            <div>
-                                <img className='mod-icon' src="https://www.bungie.net/common/destiny2_content/icons/6c9052b8fcaea41c2c858c39cf504687.png"></img>
-                                <span>Empath</span>
-                            </div>
+                        <div className='mods-column-container d-flex flex-column px-2'>
+                            <h5 className='fw-bold'>Master Mods</h5>
+                            {renderText(nightfallMasterMods)}
                         </div>
                     </div>
                 </Carousel.Caption>
