@@ -1,26 +1,26 @@
-.img-column-container{
+.wr-img-column-container{
     width: 100%;
 }
-.img-icon{
+.wr-img-icon{
     width:20%;
     padding: 1px;
 }
 
-.mods-column-container{
+.wr-mods-column-container{
     width: 100%;
 }
 
-.mod-icon{
+.wr-mod-icon{
     width:35px;
 }
 /*Adds shadow to ty*/
-.overlay-text {
+.wr-overlay-text {
     color: #FFFF;
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5); /* Adjust the shadow values as needed */
     font-weight: 'bold';
 }
 
-.overlay-container {
+.wr-overlay-container {
     position: relative;
     overflow: hidden;
     margin: auto;
@@ -29,7 +29,7 @@
     justify-content: center;
 
 }
-.overlay {
+.wr-overlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -41,7 +41,7 @@
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
-    .img-icon{
+    .wr-img-icon{
         width:25%;
         padding: 1px;
     }
@@ -52,7 +52,7 @@
 }
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
-    .img-icon{
+    .wr-img-icon{
         width:15%;
         padding: 1px;
     }
@@ -60,11 +60,11 @@
 }
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
-    .img-icon{
+    .wr-img-icon{
         width:25%;
         padding: 1px;
     }
-    .img-column-container{
+    .wr-img-column-container{
         padding: 10px;
     }
 }
@@ -74,7 +74,7 @@
 }
 
 @media only screen and (min-width: 2200px) {
-    .overlay-container {
+    .wr-overlay-container {
         width: 1280px;
         height: 720px; 
     }

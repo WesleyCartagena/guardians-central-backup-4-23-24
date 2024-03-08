@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 const renderItems = (list) => {
     const result = []
     for(let i = 0; i < list.length; i++){
-        result.push(<img className="img-fluid img-icon" key={i} src={list[i]} alt={`Item ${i + 1}`} />);
+        result.push(<img className="img-fluid wr-img-icon" key={i} src={list[i]} alt={`Item ${i + 1}`} />);
     }
     return result
 }
@@ -18,7 +18,7 @@ const renderText = (list) => {
         let value = list[i][key];
         result.push(
             <div>
-                <img className='mod-icon' key={i} src={value} alt={`Item ${i + 1}`}></img>
+                <img className='wr-mod-icon' key={i} src={value} alt={`Item ${i + 1}`}></img>
                 <span>{key}</span>
             </div>
         );
@@ -138,19 +138,19 @@ const WeeklyRotators = () => {
     return(
           <Carousel>
             <Carousel.Item interval={1000000}>
-            <div className='overlay-container'>
+            <div className='wr-overlay-container'>
                     <img className="carousel-img-transform" src="https://www.bungie.net/img/destiny_content/pgcr/raid_kings_fall.jpg" alt="Background" />
-                    <div className='overlay'></div>
+                    <div className='wr-overlay'></div>
                 </div>
-                <Carousel.Caption className='top-0 overlay-text fw-bold overflow-auto'>
+                <Carousel.Caption className='top-0 wr-overlay-text fw-bold overflow-auto'>
                     <h2 className='fw-bold'>Weekly Raid</h2>
                     <h3 className='fw-bold'>Raid Name</h3>
                     <div className={`info-container ${isSmallScreen ? 'flex-column' : 'd-inline-flex'}`}>
-                        <div className='img-column-container'>
+                        <div className='wr-img-column-container'>
                             <h5 className='fw-bold'>Weapons</h5>
                             {renderItems(raidWeaponList)}
                         </div>
-                        <div className='img-column-container'>
+                        <div className='wr-img-column-container'>
                             <h5 className='fw-bold'>Armor</h5>
                             <div className='Titan'>
                                 {renderItems(raidTitanArmorList)}
@@ -162,7 +162,7 @@ const WeeklyRotators = () => {
                                 {renderItems(raidWarlockArmorList)}
                             </div>
                         </div>
-                        <div className='img-column-container'>
+                        <div className='wr-img-column-container'>
                             <h5 className='fw-bold'>Cosmetics</h5>
                              {renderItems(raidCosmeticList)}
                         </div>
@@ -170,19 +170,19 @@ const WeeklyRotators = () => {
                 </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item interval={1000000}>
-            <div className='overlay-container'>
+            <div className='wr-overlay-container'>
                     <img className="carousel-img-transform" src="https://www.bungie.net/img/destiny_content/pgcr/raid_kings_fall.jpg" alt="Background" />
-                    <div className='overlay'></div>
+                    <div className='wr-overlay'></div>
                 </div>
-                <Carousel.Caption className='top-0 overlay-text fw-bold overflow-auto'>
+                <Carousel.Caption className='top-0 wr-overlay-text fw-bold overflow-auto'>
                     <h2 className='fw-bold'>Weekly Dungeon</h2>
                     <h3 className='fw-bold'>Dungeon Name</h3>
                     <div className={`info-container ${isSmallScreen ? 'flex-column' : 'd-inline-flex'}`}>
-                        <div className='img-column-container'>
+                        <div className='wr-img-column-container'>
                             <h5 className='fw-bold'>Weapons</h5>
                             {renderItems(dungeonWeaponList)}
                         </div>
-                        <div className='img-column-container'>
+                        <div className='wr-img-column-container'>
                             <h5 className='fw-bold'>Armor</h5>
                             <div className='Titan'>
                                 {renderItems(dungeonTitanArmorList)}
@@ -194,7 +194,7 @@ const WeeklyRotators = () => {
                                 {renderItems(dungeonWarlockArmorList)}
                             </div>
                         </div>
-                        <div className='img-column-container'>
+                        <div className='wr-img-column-container'>
                             <h5 className='fw-bold'>Cosmetics</h5>
                              {renderItems(dungeonCosmeticList)}
                         </div>
@@ -202,19 +202,19 @@ const WeeklyRotators = () => {
                 </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item interval={1000000}>
-            <div className='overlay-container'>
+            <div className='wr-overlay-container'>
                     <img className="carousel-img-transform" src="https://www.bungie.net/img/destiny_content/pgcr/raid_kings_fall.jpg" alt="Background" />
-                    <div className='overlay'></div>
+                    <div className='wr-overlay'></div>
                 </div>
-                <Carousel.Caption className='top-0 overlay-text fw-bold overflow-auto'>
+                <Carousel.Caption className='top-0 wr-overlay-text fw-bold overflow-auto'>
                     <h2 className='fw-bold'>Weekly Exotic Quest</h2>
                     <h3 className='fw-bold'>Quest Name</h3>
                     <div className={`info-container ${isSmallScreen ? 'flex-column' : 'd-inline-flex'}`}>
-                        <div className='img-column-container'>
+                        <div className='wr-img-column-container'>
                             <h5 className='fw-bold'>Weapons</h5>
                             {renderItems(exoticQuestWeaponList)}
                         </div>
-                        <div className='img-column-container'>
+                        <div className='wr-img-column-container'>
                             <h5 className='fw-bold'>Armor</h5>
                             <div className='Titan'>
                                 {renderItems(exoticQuestTitanArmorList)}
@@ -226,7 +226,7 @@ const WeeklyRotators = () => {
                                 {renderItems(exoticQuestWarlockArmorList)}
                             </div>
                         </div>
-                        <div className='img-column-container'>
+                        <div className='wr-img-column-container'>
                             <h5 className='fw-bold'>Catalyst</h5>
                              {renderItems(exoticQuestCatalystList)}
                         </div>
@@ -234,29 +234,29 @@ const WeeklyRotators = () => {
                 </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item interval={1000000}>
-                <div className='overlay-container'>
+                <div className='wr-overlay-container'>
                     <img className="carousel-img-transform" src="https://www.bungie.net/img/destiny_content/pgcr/raid_kings_fall.jpg" alt="Background" />
-                    <div className='overlay'></div>
+                    <div className='wr-overlay'></div>
                 </div>
-                <Carousel.Caption className='top-0 overlay-text fw-bold overflow-auto'>
+                <Carousel.Caption className='top-0 wr-overlay-text fw-bold overflow-auto'>
                     <h2 className='fw-bold'>Weekly Nightfall</h2>
                     <h3 className='fw-bold'>Nightfall Name</h3>
                     <div className='info-container d-inline-flex px-2'>
-                        <div className='mods-column-container'>
+                        <div className='wr-mods-column-container'>
                             <h5 className='fw-bold'>Weekly Loot</h5>
                             {renderItems(weeklyNightfallLoot)}
                         </div>
                     </div>
                     <div className='info-container d-inline-flex' >
-                        <div className='mods-column-container d-flex flex-column px-2'>
+                        <div className='wr-mods-column-container d-flex flex-column px-2'>
                             <h5 className='fw-bold'>Hero Mods</h5>
                             {renderText(nightfallHeroMods)}
                         </div>
-                        <div className='mods-column-container d-flex flex-column px-2'>
+                        <div className='wr-mods-column-container d-flex flex-column px-2'>
                             <h5 className='fw-bold'>Legend Mods</h5>
                             {renderText(nightfallLegendMods)}
                         </div>
-                        <div className='mods-column-container d-flex flex-column px-2'>
+                        <div className='wr-mods-column-container d-flex flex-column px-2'>
                             <h5 className='fw-bold'>Master Mods</h5>
                             {renderText(nightfallMasterMods)}
                         </div>
