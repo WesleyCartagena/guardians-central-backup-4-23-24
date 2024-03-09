@@ -44,6 +44,15 @@ yarn-error.log*
 /Sqlite3Destiny2DB.zip
 /Extractions/Sqlite3Destiny2DB.sqlite3
 
+# Authenticate
+/Authenticate/config.toml
+/Authenticate/bin
+/Authenticate/obj
+
+#Requests
+/Requests/bin
+/Requests/obj
+
 # Server 
 /server/node_modules
 /server/config.toml
