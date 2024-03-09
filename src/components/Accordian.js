@@ -1,5 +1,3 @@
-// To make this component more re-usable I would like to make an accordian itemm based on array size and passed in props. Prop names should be Header, Body
-// Figure out how to convert the weekly rotator icons to svgs and fill them with a different color
 import React from "react"
 import './Accordian.scss';
 import Accordion from 'react-bootstrap/Accordion';
@@ -28,8 +26,26 @@ const HomeAccordian = () =>{
             <WeeklyRotators/>
           </Accordion.Body>
         </Accordion.Item>
-      
-      <Accordion.Item eventKey="1">
+
+
+        <Accordion.Item eventKey="1" className="accordian-item text-white">
+        <Accordion.Header>
+          <div className="accordian-container">
+            <div className="accordian-letters">
+            Banshee & Ada
+            </div>
+            <div className="accordian-icons-container">
+                <img className="accordian-icons" id='banshee-icon' src="https://www.bungie.net/common/destiny2_content/icons/6c9052b8fcaea41c2c858c39cf504687.png"/>
+                <img className="accordian-icons" id='ada-icon' src="https://www.bungie.net/common/destiny2_content/icons/DestinyMilestoneDefinition_7b2e832d6fa3513b3c3e55f69aaeee40.png"/>
+            </div>
+          </div>
+        </Accordion.Header>
+        <Accordion.Body className="p-0 h-100">
+          <BansheeAda/>
+        </Accordion.Body>
+      </Accordion.Item>
+
+      <Accordion.Item eventKey="2">
         <Accordion.Header>
           <div className="accordian-container">
             <div className="accordian-letters">
@@ -42,23 +58,6 @@ const HomeAccordian = () =>{
           </Accordion.Header>
         <Accordion.Body>
           <LostSector/>
-        </Accordion.Body>
-      </Accordion.Item>
-
-      <Accordion.Item eventKey="2">
-        <Accordion.Header>
-          <div className="accordian-container">
-            <div className="accordian-letters">
-            Banshee & Ada
-            </div>
-            <div className="accordian-icons-container">
-                <img className="accordian-icons" id='banshee-icon' src="https://www.bungie.net/common/destiny2_content/icons/6c9052b8fcaea41c2c858c39cf504687.png"/>
-                <img className="accordian-icons" id='ada-icon' src="https://www.bungie.net/common/destiny2_content/icons/DestinyMilestoneDefinition_7b2e832d6fa3513b3c3e55f69aaeee40.png"/>
-            </div>
-          </div>
-        </Accordion.Header>
-        <Accordion.Body>
-          <BansheeAda/>
         </Accordion.Body>
       </Accordion.Item>
 
@@ -82,3 +81,6 @@ const HomeAccordian = () =>{
 }
 
 export default HomeAccordian;
+// To make this component more re-usable I would like to make an accordian itemm based on array size and passed in props. Prop names should be Header, Body
+// Figure out how to convert the weekly rotator icons to svgs and fill them with a different color
+// Make an accordian item for Xur, Dares of Eternity maybe goes in weekly rotators
