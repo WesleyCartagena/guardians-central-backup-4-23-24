@@ -144,7 +144,7 @@ const BansheeAda = () => {
     return(
           <Carousel controls={false} indicators={false}>
             <Carousel.Item interval={1000000} className='w-100'>
-            <div className='ba-overlay-container'>
+                <div className='ba-overlay-container'>
                     <img className="carousel-img-transform" src="https://www.bungie.net/img/destiny_content/pgcr/raid_kings_fall.jpg" alt="Background" />
                     <div className='ba-overlay'></div>
                 </div>

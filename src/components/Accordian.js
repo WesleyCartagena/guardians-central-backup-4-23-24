@@ -45,7 +45,7 @@ const HomeAccordian = () =>{
         </Accordion.Body>
       </Accordion.Item>
 
-      <Accordion.Item eventKey="2">
+      <Accordion.Item eventKey="2" className="accordian-item text-white">
         <Accordion.Header>
           <div className="accordian-container">
             <div className="accordian-letters">
@@ -56,12 +56,12 @@ const HomeAccordian = () =>{
             </div>
           </div>
           </Accordion.Header>
-        <Accordion.Body>
+        <Accordion.Body className="p-0 h-100">
           <LostSector/>
         </Accordion.Body>
       </Accordion.Item>
 
-      <Accordion.Item eventKey="3">
+      <Accordion.Item eventKey="3" className="accordian-item text-white">
         <Accordion.Header>
           <div className="accordian-container">
             <div className="accordian-letters">
@@ -72,7 +72,7 @@ const HomeAccordian = () =>{
             </div>
           </div>
         </Accordion.Header>
-        <Accordion.Body>
+        <Accordion.Body className="p-0 h-100">
           <SeasonReport/>
         </Accordion.Body>
       </Accordion.Item>
