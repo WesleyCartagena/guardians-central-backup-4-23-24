@@ -17,7 +17,7 @@ const renderText = (list) => {
         let key = Object.keys(list[i])[0];
         let value = list[i][key];
         result.push(
-            <div key={i}>
+            <div className='wr-mods-column' key={i}>
                 <img className='wr-mod-icon' key={i} src={value} alt={`Item ${i + 1}`}></img>
                 <span className='wr-mod-text'>{key}</span>
             </div>

@@ -18,10 +18,10 @@
     width: 1;
   }
   
-  .accordion-button:not(.collapsed)::after {
+.accordion-button:not(.collapsed)::after {
     background-image: url(../assets/images/chevron-down-solid.svg);
     width: 1;
-  }
+}
 
 
 .accordian-container{
@@ -45,13 +45,13 @@
         background-image: url(../assets/images/chevron-up-solid.svg);
         width: 1;
         background-size: 18px;
-      }
+    }
       
-      .accordion-button:not(.collapsed)::after {
-        background-image: url(../assets/images/chevron-down-solid.svg);
-        width: 1;
-        background-size: 18px;
-      }
+    .accordion-button:not(.collapsed)::after {
+    background-image: url(../assets/images/chevron-down-solid.svg);
+    width: 1;
+    background-size: 18px;
+    }
 }
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {

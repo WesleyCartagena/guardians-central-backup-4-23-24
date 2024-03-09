@@ -65,7 +65,7 @@ const LostSector = () => {
             </div>
             <Carousel.Caption className='top-0 ls-overlay-text fw-bold overflow-auto'>
                 <h2 className='fw-bold'>Lost Sector</h2>
-                <h3 className='fw-bold'>Resets Daily at 1700 UTC</h3>
+                <h5 className='fw-bold'>Resets Daily @ 1700 UTC</h5>
                 <div className={`ls-info-container ${isSmallScreen ? 'flex-column' : 'd-inline-flex'}`}>
                     <div className='ls-rewards-container'>
                         <h3 className='fw-bold'>NAME OF LOST SECTOR</h3>

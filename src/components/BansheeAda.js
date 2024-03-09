@@ -1,6 +1,7 @@
 import Carousel from 'react-bootstrap/Carousel';
 import './BansheeAda.scss'
 import { useEffect, useState } from 'react'
+
 const renderItems = (list) => {
     const result = []
     for(let i = 0; i < list.length; i++){
@@ -9,21 +10,6 @@ const renderItems = (list) => {
     return result
 }
 
-const renderText = (list) => {
-    const result = []
-    for(let i = 0; i < list.length; i++){
-        let key = Object.keys(list[i])[0];
-        let value = list[i][key];
-        result.push(
-            <div>
-                <img className='perk-icon' key={i} src={value} alt={`Item ${i + 1}`}></img>
-                <span>{key}</span>
-            </div>
-        );
-    }
-    return result
-}
-//<div className={`${isSmallScreen ? 'flex-column' : 'd-inline-flex'}`}>
 const renderWeapons = (list, screenSize) => {
     const result = []
     let containerClass = ''
@@ -41,7 +27,7 @@ const renderWeapons = (list, screenSize) => {
                 <div className='d-flex inline daily-weapon-section-1'>
                     <div className='weapon-img-icon-container'>
                         <img className='img-fluid weapon-img-icon' src={weaponImg}></img>
-                    </div>{/* Remove this div later maybe or through if statement it works better if you remove it when you reduce width of image*/}
+                    </div>
                     <div className='weapon-strings-container d-flex d-flex flex-column pt-2'>
                         <span className='fw-bold'>{weaponName}</span>
                         <span className='fw-bold'>{weaponType}</span>

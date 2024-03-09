@@ -65,6 +65,22 @@ const HomeAccordian = () =>{
         <Accordion.Header>
           <div className="accordian-container">
             <div className="accordian-letters">
+            Xur
+            </div>
+            <div className="accordian-icons-container">
+                <img className="accordian-icons" id='seasonal-icon' src="https://www.bungie.net/common/destiny2_content/icons/6c9052b8fcaea41c2c858c39cf504687.png"/>
+            </div>
+          </div>
+        </Accordion.Header>
+        <Accordion.Body className="p-0 h-100">
+          <SeasonReport/>
+        </Accordion.Body>
+      </Accordion.Item>
+      
+      <Accordion.Item eventKey="5" className="accordian-item text-white">
+        <Accordion.Header>
+          <div className="accordian-container">
+            <div className="accordian-letters">
             Seasonal Report
             </div>
             <div className="accordian-icons-container">
