@@ -60,7 +60,8 @@ const HomeAccordian = () =>{
           <LostSector/>
         </Accordion.Body>
       </Accordion.Item>
-
+      {/* Activate when ready */}
+      {/*
       <Accordion.Item eventKey="3" className="accordian-item text-white">
         <Accordion.Header>
           <div className="accordian-container">
@@ -75,9 +76,9 @@ const HomeAccordian = () =>{
         <Accordion.Body className="p-0 h-100">
           <SeasonReport/>
         </Accordion.Body>
-      </Accordion.Item>
-      
-      <Accordion.Item eventKey="5" className="accordian-item text-white">
+      </Accordion.Item>*/}
+      {/* Activate when ready */}
+      {/*<Accordion.Item eventKey="5" className="accordian-item text-white">
         <Accordion.Header>
           <div className="accordian-container">
             <div className="accordian-letters">
@@ -91,7 +92,7 @@ const HomeAccordian = () =>{
         <Accordion.Body className="p-0 h-100">
           <SeasonReport/>
         </Accordion.Body>
-      </Accordion.Item>
+    </Accordion.Item>*/}
     </Accordion>
     );
 }
