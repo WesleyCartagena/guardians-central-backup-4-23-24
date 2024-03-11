@@ -45,7 +45,8 @@ app.listen(8000, () => {
 app.get('/', (req, res) => {
     res.json({ message: "Server is running on port 8000." });
 });
-
+// Commenting out for now
+/*
 app.get('/testConnection', (req, res) => {
     // Create a connection to the database
     const connection = new Connection(serverConfig);
@@ -96,4 +97,4 @@ app.get('/testConnection', (req, res) => {
     connection.connect();
 });
 
-app.get('/testConnection2', (req, res) => {});
+app.get('/testConnection2', (req, res) => {});*/

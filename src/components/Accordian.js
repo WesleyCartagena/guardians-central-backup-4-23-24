@@ -15,10 +15,10 @@ const HomeAccordian = () =>{
                 Weekly Rotators
               </div>
               <div className="accordian-icons-container">
-                <img className="accordian-icons" id='raid-icon' src="https://www.bungie.net/common/destiny2_content/icons/6c9052b8fcaea41c2c858c39cf504687.png"/>
-                <img className="accordian-icons" id='dungeon-icon' src="https://www.bungie.net/common/destiny2_content/icons/DestinyMilestoneDefinition_7b2e832d6fa3513b3c3e55f69aaeee40.png"/>
-                <img className="accordian-icons" id='exotic-quest-icon' src="https://www.bungie.net/common/destiny2_content/icons/DestinyMilestoneDefinition_fbba06b79fd1752af47e133cce7a3f45.png"/>
-                <img  className="accordian-icons" id='nightfall-icon' src="https://www.bungie.net/common/destiny2_content/icons/DestinyMilestoneDefinition_a72e5ce5c66e21f34a420271a30d7ec3.png"/>
+                <img className="accordian-icons" id='raid-icon' src="https://www.bungie.net/common/destiny2_content/icons/6c9052b8fcaea41c2c858c39cf504687.png" alt="raid icon" aria-hidden="true"/>
+                <img className="accordian-icons" id='dungeon-icon' src="https://www.bungie.net/common/destiny2_content/icons/DestinyMilestoneDefinition_7b2e832d6fa3513b3c3e55f69aaeee40.png" alt="dungeon icon" aria-hidden="true"/>
+                <img className="accordian-icons" id='exotic-quest-icon' src="https://www.bungie.net/common/destiny2_content/icons/DestinyMilestoneDefinition_fbba06b79fd1752af47e133cce7a3f45.png" alt="exoctic quest icon" aria-hidden="true"/>
+                <img  className="accordian-icons" id='nightfall-icon' src="https://www.bungie.net/common/destiny2_content/icons/DestinyMilestoneDefinition_a72e5ce5c66e21f34a420271a30d7ec3.png" alt="nightfall icon"/>
               </div>
             </div>
           </Accordion.Header>
@@ -35,8 +35,8 @@ const HomeAccordian = () =>{
             Banshee & Ada
             </div>
             <div className="accordian-icons-container">
-                <img className="accordian-icons" id='banshee-icon' src="https://www.bungie.net/common/destiny2_content/icons/6c9052b8fcaea41c2c858c39cf504687.png"/>
-                <img className="accordian-icons" id='ada-icon' src="https://www.bungie.net/common/destiny2_content/icons/DestinyMilestoneDefinition_7b2e832d6fa3513b3c3e55f69aaeee40.png"/>
+                <img className="accordian-icons" id='banshee-icon' src="https://www.bungie.net/common/destiny2_content/icons/6c9052b8fcaea41c2c858c39cf504687.png" alt="banshee icon" aria-hidden="true"/>
+                <img className="accordian-icons" id='ada-icon' src="https://www.bungie.net/common/destiny2_content/icons/DestinyMilestoneDefinition_7b2e832d6fa3513b3c3e55f69aaeee40.png" alt="ada icon" aria-hidden="true"/>
             </div>
           </div>
         </Accordion.Header>
@@ -52,7 +52,7 @@ const HomeAccordian = () =>{
             Lost Sector
             </div>
             <div className="accordian-icons-container">
-                <img className="accordian-icons" id='lost-sector-icon' src="https://www.bungie.net/common/destiny2_content/icons/6c9052b8fcaea41c2c858c39cf504687.png"/>
+                <img className="accordian-icons" id='lost-sector-icon' src="https://www.bungie.net/common/destiny2_content/icons/6c9052b8fcaea41c2c858c39cf504687.png" alt="lost sector icon" aria-hidden='true'/>
             </div>
           </div>
           </Accordion.Header>

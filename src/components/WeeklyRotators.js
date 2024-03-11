@@ -146,11 +146,11 @@ const WeeklyRotators = () => {
                     <h2 className='fw-bold'>Weekly Raid</h2>
                     <h3 className='fw-bold'>Raid Name</h3>
                     <div className={`info-container ${isSmallScreen ? 'flex-column' : 'd-inline-flex'}`}>
-                        <div className='wr-img-column-container'>
+                        <div className='wr-img-column-container px-1'>
                             <h5 className='fw-bold'>Weapons</h5>
                             {renderItems(raidWeaponList)}
                         </div>
-                        <div className='wr-img-column-container'>
+                        <div className='wr-img-column-container px-1'>
                             <h5 className='fw-bold'>Armor</h5>
                             <div className='Titan'>
                                 {renderItems(raidTitanArmorList)}
@@ -162,7 +162,7 @@ const WeeklyRotators = () => {
                                 {renderItems(raidWarlockArmorList)}
                             </div>
                         </div>
-                        <div className='wr-img-column-container'>
+                        <div className='wr-img-column-container px-1'>
                             <h5 className='fw-bold'>Cosmetics</h5>
                              {renderItems(raidCosmeticList)}
                         </div>
@@ -178,11 +178,11 @@ const WeeklyRotators = () => {
                     <h2 className='fw-bold'>Weekly Dungeon</h2>
                     <h3 className='fw-bold'>Dungeon Name</h3>
                     <div className={`info-container ${isSmallScreen ? 'flex-column' : 'd-inline-flex'}`}>
-                        <div className='wr-img-column-container'>
+                        <div className='wr-img-column-container px-1'>
                             <h5 className='fw-bold'>Weapons</h5>
                             {renderItems(dungeonWeaponList)}
                         </div>
-                        <div className='wr-img-column-container'>
+                        <div className='wr-img-column-container px-1'>
                             <h5 className='fw-bold'>Armor</h5>
                             <div className='Titan'>
                                 {renderItems(dungeonTitanArmorList)}
@@ -194,7 +194,7 @@ const WeeklyRotators = () => {
                                 {renderItems(dungeonWarlockArmorList)}
                             </div>
                         </div>
-                        <div className='wr-img-column-container'>
+                        <div className='wr-img-column-container px-1'>
                             <h5 className='fw-bold'>Cosmetics</h5>
                              {renderItems(dungeonCosmeticList)}
                         </div>
@@ -209,12 +209,13 @@ const WeeklyRotators = () => {
                 <Carousel.Caption className='top-0 wr-overlay-text fw-bold overflow-auto'>
                     <h2 className='fw-bold'>Weekly Exotic Quest</h2>
                     <h3 className='fw-bold'>Quest Name</h3>
+                    <p>You get 3 guaranteed red border drops per week. <br></br>One for completing legend, one for master and one when the pinnacle reward is completed</p>
                     <div className={`info-container ${isSmallScreen ? 'flex-column' : 'd-inline-flex'}`}>
-                        <div className='wr-img-column-container'>
+                        <div className='wr-img-column-container px-1'>
                             <h5 className='fw-bold'>Weapons</h5>
                             {renderItems(exoticQuestWeaponList)}
                         </div>
-                        <div className='wr-img-column-container'>
+                        <div className='wr-img-column-container px-1'>
                             <h5 className='fw-bold'>Armor</h5>
                             <div className='Titan'>
                                 {renderItems(exoticQuestTitanArmorList)}
@@ -226,7 +227,7 @@ const WeeklyRotators = () => {
                                 {renderItems(exoticQuestWarlockArmorList)}
                             </div>
                         </div>
-                        <div className='wr-img-column-container'>
+                        <div className='wr-img-column-container px-1'>
                             <h5 className='fw-bold'>Catalyst</h5>
                              {renderItems(exoticQuestCatalystList)}
                         </div>

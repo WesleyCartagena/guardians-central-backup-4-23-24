@@ -14,9 +14,9 @@ const Home = (props) => {
         .then((data) => setMessage(data.message));
 
         // Fetch testConnection data
-        fetch("http://localhost:8000/testConnection")
-        .then((res) => res.json())
-        .then((data) => setTestConnectionData(data.testConnectionData))
+        //fetch("http://localhost:8000/testConnection")
+        //.then((res) => res.json())
+        //.then((data) => setTestConnectionData(data.testConnectionData))
     }, []);
     
     

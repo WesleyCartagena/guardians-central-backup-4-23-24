@@ -197,6 +197,12 @@ scrollbar-width: none;  /* Firefox */
     }
 }
 
+@media only screen and (min-width: 1700px) {
+    .weapon-strings-container span{
+        font-size: 10px;
+    }
+}
+
 @media only screen and (min-width: 1800px) {
     .ba-img-icon{
         width:18%;
