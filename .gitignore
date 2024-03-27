@@ -22,10 +22,6 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Database file
-/Sqlite3Destiny2DB.zip
-/Extractions/Sqlite3Destiny2DB.sqlite3
-
 # User-specific files
 *.rsuser
 *.suo
@@ -36,12 +32,36 @@ yarn-error.log*
 
 # Visual Studio
 /.vs
-/database/bin
-/database/obj
 
 # Rider
 .idea/
 
+# Database
 /guardians-central.sln
 /database/config.toml
 /database/logging
+/database/bin
+/database/obj
+/Sqlite3Destiny2DB.zip
+/Extractions/Sqlite3Destiny2DB.sqlite3
+
+# Server 
+/server/node_modules
+/server/config.toml
+
+# Temp
+/config.toml
+
+# Authenticate
+/Authenticate/config.toml
+/Authenticate/bin
+/Authenticate/obj
+
+# Requests
+/Requests/bin
+/Requests/obj
+
+# Temp
+/WeeklyRotators/obj
+/WeeklyRotators/bin
+/WeeklyRotators/config.toml
