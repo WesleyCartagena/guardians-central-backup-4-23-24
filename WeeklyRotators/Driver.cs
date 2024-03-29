@@ -34,16 +34,21 @@ class Program{
         string BungieApiRootPath = configFile.Get<string>("BungieAPIRootPath");
         string GetPublicMilestoneEndpoint = configFile.Get<string>("GetPublicMilestoneEndpoint");
         string GuardiansCentralApiKey = configFile.Get<string>("GuardiansCentralApiKey");
+        string Server = configFile.Get<string>("Server");
+        string Database = configFile.Get<string>("Database");
+        string UserId = configFile.Get<string>("UserId");
+        string Password = configFile.Get<string>("Password");
 
-        try{
-            PublicMilestonesResponse.RootObject PublicMilestonesObject = await BungieApiRequests.GetPublicMilestonesRequest(BungieRootPath, GetPublicMilestoneEndpoint, GuardiansCentralApiKey);
-            Console.WriteLine(PublicMilestonesObject.Response["213479068"]);
-            Console.WriteLine(JsonConvert.SerializeObject(PublicMilestonesObject.Response["213479068"]));
-            //Console.WriteLine(JsonConvert.DeserializeObject(PublicMilestonesResponse));
-            //Console.WriteLine(PublicMilestonesResponse.Response);
-        }catch(Exception ex){
-            Log.Error(ex, "Failed");
-        }
+
+        PublicMilestonesResponse.RootObject PublicMilestonesObject = await BungieApiRequests.GetPublicMilestonesRequest(BungieRootPath, GetPublicMilestoneEndpoint, GuardiansCentralApiKey);
+        //Console.WriteLine(PublicMilestonesObject.Response["213479068"]);
+        //Console.WriteLine(JsonConvert.SerializeObject(PublicMilestonesObject.Response["213479068"]));
+        //Console.WriteLine(JsonConvert.DeserializeObject(PublicMilestonesResponse));
+        //Console.WriteLine(PublicMilestonesResponse.Response);
+        WeeklyRotatorsTable.BuildWeeklyRotatorsTable(PublicMilestonesObject, Server, Database, UserId, Password);
+
+
+    
 
         Log.CloseAndFlush();  
     }

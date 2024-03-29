@@ -1,0 +1,126 @@
+{
+  "1888320892": {
+    "1888320892": {
+      "milestoneHash": 1888320892,
+      "availableQuests": null,
+      "activities": [
+        {
+          "activityHash": 3881495763,
+          "challengeObjectiveHashes": [3180884403],
+          "modifierHashes": [
+            1572570117, 3135466059, 3212721586, 274420331, 2814846409,
+            1783825372, 4075903438
+          ],
+          "phaseHashes": [
+            1327839050, 1327839048, 1327839049, 3793779770, 3793779769
+          ],
+          "booleanActivityOptions": {
+            "2026375253": true,
+            "2105106055": true,
+            "2455607798": true,
+            "824556787": true,
+            "2839749369": true,
+            "1276289630": true
+          }
+        },
+        {
+          "activityHash": 3022541210,
+          "challengeObjectiveHashes": [3180884403],
+          "modifierHashes": [
+            1783825372, 1789323317, 4075903438, 2833087500, 2650740350,
+            4087563963, 1990363418, 197794292, 4226469317, 3810297122,
+            426976067, 95459596
+          ],
+          "phaseHashes": [
+            1327839050, 1327839048, 1327839049, 3793779770, 3793779769
+          ],
+          "booleanActivityOptions": {
+            "2026375253": true,
+            "2105106055": true,
+            "2455607798": true,
+            "824556787": true,
+            "2839749369": true,
+            "2988353107": true,
+            "3936828761": true,
+            "1118409995": true,
+            "1724944068": true,
+            "1658489738": true,
+            "3954849073": true,
+            "435445692": false,
+            "3772344187": true,
+            "138985033": false,
+            "146916380": false,
+            "4235118010": true,
+            "1051545531": true,
+            "1629533353": true
+          }
+        }
+      ],
+      "startDate": "2024-03-26T17:00:00Z",
+      "endDate": "2024-04-02T17:00:00Z",
+      "order": 8000
+    }
+  },
+  "1742973996": {
+    "1742973996": {
+      "milestoneHash": 1742973996,
+      "availableQuests": null,
+      "activities": [
+        {
+          "activityHash": 2032534090,
+          "challengeObjectiveHashes": [3838169295],
+          "modifierHashes": null,
+          "phaseHashes": null,
+          "booleanActivityOptions": null
+        }
+      ],
+      "startDate": "2024-03-26T17:00:00Z",
+      "endDate": "2024-04-02T17:00:00Z",
+      "order": 33
+    }
+  },
+  "1027301269": {
+    "1027301269": {
+      "milestoneHash": 1027301269,
+      "availableQuests": null,
+      "activities": [
+        {
+          "activityHash": 2668737148,
+          "challengeObjectiveHashes": [1320261963],
+          "modifierHashes": [2475764450, 1598783516, 1783825372],
+          "phaseHashes": null,
+          "booleanActivityOptions": null
+        },
+        {
+          "activityHash": 666172264,
+          "challengeObjectiveHashes": [1320261963],
+          "modifierHashes": [
+            1139702033, 1783825372, 1486810101, 438106166, 1806568190,
+            3958417570, 1377274412, 4230548176, 3652821947, 4226469317,
+            3758645512, 3810297122, 426976067
+          ],
+          "phaseHashes": null,
+          "booleanActivityOptions": {
+            "2988353107": false,
+            "3936828761": true,
+            "1118409995": true,
+            "1724944068": true,
+            "1658489738": true,
+            "2864774655": true,
+            "3954849073": true,
+            "1612868887": true,
+            "435445692": false,
+            "3772344187": true,
+            "138985033": false,
+            "146916380": false,
+            "4235118010": true,
+            "1051545531": true
+          }
+        }
+      ],
+      "startDate": "2024-03-26T17:00:00Z",
+      "endDate": "2024-04-02T17:00:00Z",
+      "order": 34
+    }
+  }
+}
