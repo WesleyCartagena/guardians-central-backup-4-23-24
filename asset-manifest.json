@@ -1,16 +1,18 @@
 {
   "files": {
-    "main.css": "/guardians-central/static/css/main.689c555f.css",
-    "main.js": "/guardians-central/static/js/main.4ecc29a8.js",
+    "main.css": "/guardians-central/static/css/main.86ca2d74.css",
+    "main.js": "/guardians-central/static/js/main.bf31387a.js",
     "static/js/787.537c4c87.chunk.js": "/guardians-central/static/js/787.537c4c87.chunk.js",
     "static/media/destiny2-traveler-2.jpg": "/guardians-central/static/media/destiny2-traveler-2.28bb8185c81b765ecd22.jpg",
     "index.html": "/guardians-central/index.html",
-    "main.689c555f.css.map": "/guardians-central/static/css/main.689c555f.css.map",
-    "main.4ecc29a8.js.map": "/guardians-central/static/js/main.4ecc29a8.js.map",
+    "static/media/chevron-down-solid.svg": "/guardians-central/static/media/chevron-down-solid.f47e5f212741c599382c.svg",
+    "static/media/chevron-up-solid.svg": "/guardians-central/static/media/chevron-up-solid.365bb60c64d843cde58f.svg",
+    "main.86ca2d74.css.map": "/guardians-central/static/css/main.86ca2d74.css.map",
+    "main.bf31387a.js.map": "/guardians-central/static/js/main.bf31387a.js.map",
     "787.537c4c87.chunk.js.map": "/guardians-central/static/js/787.537c4c87.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.689c555f.css",
-    "static/js/main.4ecc29a8.js"
+    "static/css/main.86ca2d74.css",
+    "static/js/main.bf31387a.js"
   ]
 }
