@@ -62,3 +62,4 @@ yarn-error.log*
 /WeeklyRotators/obj
 /WeeklyRotators/bin
 /WeeklyRotators/config.toml
+/WeeklyRotators/logging

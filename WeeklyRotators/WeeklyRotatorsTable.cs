@@ -12,7 +12,8 @@ public class WeeklyRotatorsTable{
         Log.Information(sqlConnectionString);
 
         // Dictionary to store weekly rotator milestones
-        Dictionary<string, Dictionary<string, PublicMilestonesResponse.Milestone>> rawWeeklyRotatorsDictionary = new Dictionary<string, Dictionary<string, PublicMilestonesResponse.Milestone>>();
+        //Dictionary<string, Dictionary<string, PublicMilestonesResponse.Milestone>> rawWeeklyRotatorsDictionary = new Dictionary<string, Dictionary<string, PublicMilestonesResponse.Milestone>>();
+        Dictionary<string, PublicMilestonesResponse.Milestone> rawWeeklyRotatorsDictionary = new Dictionary<string, PublicMilestonesResponse.Milestone>();
 
 
         foreach (KeyValuePair<string, PublicMilestonesResponse.Milestone> milestoneKVP in PublicMilestonesObject.Response){
@@ -23,11 +24,7 @@ public class WeeklyRotatorsTable{
                             // Check if the key exist already if it does do not add it. This will eliminate the Legend versions from the dict
                             if (!rawWeeklyRotatorsDictionary.ContainsKey(milestoneKVP.Key)){
                                 // Create a new dictionary to hold the milestone
-                                Dictionary<string, PublicMilestonesResponse.Milestone> milestoneDict = new Dictionary<string, PublicMilestonesResponse.Milestone>();
-                                // Add the milestone to the dictionary
-                                milestoneDict.Add(milestoneKVP.Key, milestoneKVP.Value);
-                                // Add the dictionary to the main dictionary
-                                rawWeeklyRotatorsDictionary.Add(milestoneKVP.Key, milestoneDict);
+                                rawWeeklyRotatorsDictionary.Add(milestoneKVP.Key, milestoneKVP.Value);
                             }
                         }
                     }
@@ -35,17 +32,18 @@ public class WeeklyRotatorsTable{
             }
 
         }
-        Console.WriteLine(JsonConvert.SerializeObject(rawWeeklyRotatorsDictionary));
-        // foreach (var dict in rawWeeklyRotatorsDictionary){
-        //     Console.WriteLine(JsonConvert.SerializeObject(dict));
-        // }
-        // using (SqlConnection msSqlConnection = new SqlConnection(sqlConnectionString)){
-        //     try{
-        //         msSqlConnection.Open();
-        //     }catch (Exception ex){
-        //         Log.Error($"Error opening MySQL connection: {ex.Message}");
-        //     }
-        // }
+        Log.Information(JsonConvert.SerializeObject(rawWeeklyRotatorsDictionary));
+        foreach (var dict in rawWeeklyRotatorsDictionary){
+            Log.Debug(JsonConvert.SerializeObject(dict));
+        }
+        using (SqlConnection msSqlConnection = new SqlConnection(sqlConnectionString)){
+            try{
+                msSqlConnection.Open();
+                
+            }catch (Exception ex){
+                Log.Error($"Error opening MySQL connection: {ex.Message}");
+            }
+        }
 
     }
     private static bool TableExists(SqlConnection connection, string tableName) {
