@@ -49,6 +49,7 @@ yarn-error.log*
 /server/node_modules
 /server/config.toml
 
+# Temp
 /config.toml
 
 # Authenticate
@@ -56,10 +57,11 @@ yarn-error.log*
 /Authenticate/bin
 /Authenticate/obj
 
-#Requests
+# Requests
 /Requests/bin
 /Requests/obj
 
+# Temp
 /WeeklyRotators/obj
 /WeeklyRotators/bin
 /WeeklyRotators/config.toml
