@@ -41,6 +41,7 @@ yarn-error.log*
 /database/config.toml
 /database/bin
 /database/obj
+/database/logging
 /Sqlite3Destiny2DB.zip
 /Extractions/Sqlite3Destiny2DB.sqlite3
 

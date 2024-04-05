@@ -10,7 +10,7 @@
             "request": "launch",
             "preLaunchTask": "build",
             "program": "${workspaceFolder}\\WeeklyRotators\\bin\\Debug\\net8.0\\win-x64\\WeeklyRotators.dll",
-            "args": ["C:\\Users\\wesle\\Repos\\guardians-central\\WeeklyRotators\\config.toml"],
+            "args": ["${workspaceFolder}\\WeeklyRotators\\config.toml"],
             "cwd": "${workspaceFolder}",
             "stopAtEntry": false,
             "console": "internalConsole"
