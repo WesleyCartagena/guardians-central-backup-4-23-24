@@ -84,29 +84,33 @@ public class InventoryItemDefinitionJson{
 public class WeeklyRotatorsTable{
     public static void BuildWeeklyRotatorsTable(PublicMilestonesResponse.RootObject PublicMilestonesObject, string Server, string Database, string UserId, string Password){
         // Create MS SQL Server connection
-        //string sqlConnectionString = $"Server={Server};Database={Database};TrustServerCertificate=True;Uid={UserId};Pwd={Password};";
-        string sqlConnectionString = $"Server=localhost;Database=WesleyTestDB;Integrated Security=True;TrustServerCertificate=True;";
+        string sqlConnectionString = $"Server={Server};Database={Database};TrustServerCertificate=True;Uid={UserId};Pwd={Password};";
         Log.Information(sqlConnectionString);
         string tableName = "WeeklyRotatorsTable";
         // Dictionary to store weekly rotator milestones
         Dictionary<string, PublicMilestonesResponse.Milestone> rawWeeklyRotatorsDictionary = new Dictionary<string, PublicMilestonesResponse.Milestone>();
 
         // Loops through all milestones and checks for the 3 Weekly Rotators and adds them to a list
-        foreach (KeyValuePair<string, PublicMilestonesResponse.Milestone> milestoneKVP in PublicMilestonesObject.Response){
-            if (milestoneKVP.Value.Activities != null) {
-                foreach (PublicMilestonesResponse.Activity activity in milestoneKVP.Value.Activities){
-                    if(activity.ChallengeObjectiveHashes != null){
-                        if(activity.ChallengeObjectiveHashes.Count > 0){ 
-                            // Check if the key exist already if it does do not add it. This will eliminate the Legend versions from the dict
-                            if (!rawWeeklyRotatorsDictionary.ContainsKey(milestoneKVP.Key)){
-                                // Create a new dictionary to hold the milestone
-                                rawWeeklyRotatorsDictionary.Add(milestoneKVP.Key, milestoneKVP.Value);
+        if (PublicMilestonesObject.Response != null) {
+            foreach (KeyValuePair<string, PublicMilestonesResponse.Milestone> milestoneKVP in PublicMilestonesObject.Response){
+                if (milestoneKVP.Value.Activities != null) {
+                    foreach (PublicMilestonesResponse.Activity activity in milestoneKVP.Value.Activities){
+                        if(activity.ChallengeObjectiveHashes != null){
+                            if(activity.ChallengeObjectiveHashes.Count > 0){ 
+                                // Check if the key exist already if it does do not add it. This will eliminate the Legend versions from the dict
+                                if (!rawWeeklyRotatorsDictionary.ContainsKey(milestoneKVP.Key)){
+                                    // Create a new dictionary to hold the milestone
+                                    rawWeeklyRotatorsDictionary.Add(milestoneKVP.Key, milestoneKVP.Value);
+                                }
                             }
                         }
                     }
                 }
-            }
 
+            }
+        } else {
+            Log.Warning("PublicMilestonesObject.Response is null. Unable to iterate through milestones.");
+            throw new ApplicationException("PublicMilestonesObject.Response is null. Unable to iterate through milestones.");
         }
 
 
@@ -146,14 +150,26 @@ public class WeeklyRotatorsTable{
                                     LogId = reader["Id"],
                                     LogJson = reader["json"].ToString(),
                                 });
-                                string milestoneDefinitionJson = reader["json"].ToString();
-                                Console.WriteLine(milestoneDefinitionJson);
-                                MilestoneDefinitionJson.Root milestoneDefinitionRoot = JsonConvert.DeserializeObject<MilestoneDefinitionJson.Root>(milestoneDefinitionJson);
-                                milestoneHash = milestoneDefinitionRoot.hash;
-                                string activityHash = JsonConvert.SerializeObject(milestoneDefinitionRoot.activities[0].activityHash);
-                                activityId =  unchecked((int) int.Parse(activityHash));
-                                string iconUrl = milestoneDefinitionRoot.displayProperties.icon;
-                                weeklyRotatorTableJson.Add("icon_url",iconUrl);
+                                string? milestoneDefinitionJson = reader["json"].ToString();
+                                MilestoneDefinitionJson.Root? milestoneDefinitionRoot = null;
+                                if (milestoneDefinitionJson != null) {
+                                    milestoneDefinitionRoot = JsonConvert.DeserializeObject<MilestoneDefinitionJson.Root>(milestoneDefinitionJson);
+                                } else {
+                                    Log.Warning("milestoneDefinitionJson is null. Unable to deserialize.");
+                                }
+                                milestoneHash = milestoneDefinitionRoot?.hash;
+                                string? activityHash = null;
+                                if (milestoneDefinitionRoot != null && milestoneDefinitionRoot.activities != null && milestoneDefinitionRoot.activities.Length > 0) {
+                                    activityHash = JsonConvert.SerializeObject(milestoneDefinitionRoot.activities[0].activityHash);
+                                }
+
+                                if(activityHash != null){
+                                    activityId =  unchecked((int) int.Parse(activityHash));
+                                }
+                                string? iconUrl = milestoneDefinitionRoot?.displayProperties?.icon;
+                                if (iconUrl != null) {
+                                    weeklyRotatorTableJson.Add("icon_url", iconUrl);
+                                }
                             }
                         }
                     }
@@ -174,17 +190,24 @@ public class WeeklyRotatorsTable{
                     using (SqlCommand sqlCommand = new SqlCommand($"SELECT * FROM DestinyActivityDefinition Where Id = {activityId}", msSqlConnection)){
                         using (SqlDataReader reader = sqlCommand.ExecuteReader()){
                             while (reader.Read()){
-                                string activityDefinitionJson = reader["json"].ToString();
-                                Console.WriteLine(activityDefinitionJson);
-                                ActivityDefinitionJson.Root activityDefinitionRoot = JsonConvert.DeserializeObject<ActivityDefinitionJson.Root>(activityDefinitionJson);
-                                activityName = activityDefinitionRoot.originalDisplayProperties.name;
-                                activityName = activityName.Replace(":", "");
-                                string pgcrImage = activityDefinitionRoot.pgcrImage;
-                                int activityTypeHash = activityDefinitionRoot.activityTypeHash;
-                                activityTypeId = unchecked((int) activityTypeHash);
-                                Console.WriteLine(activityTypeId);
-                                weeklyRotatorTableJson.Add("activity_name",activityName);
-                                weeklyRotatorTableJson.Add("pcgr_image",pgcrImage);
+                                string? activityDefinitionJson = reader["json"].ToString();
+                                ActivityDefinitionJson.Root? activityDefinitionRoot = null;
+                                if(activityDefinitionJson != null){
+                                    activityDefinitionRoot = JsonConvert.DeserializeObject<ActivityDefinitionJson.Root>(activityDefinitionJson);
+                                }
+                                activityName = activityDefinitionRoot?.originalDisplayProperties?.name;
+                                activityName = activityName?.Replace(":", "");
+                                string? pgcrImage = activityDefinitionRoot?.pgcrImage;
+                                int? activityTypeHash = activityDefinitionRoot?.activityTypeHash;
+                                if(activityTypeHash != null){
+                                    activityTypeId = unchecked((int) activityTypeHash);
+                                }
+                                if(activityName != null){
+                                    weeklyRotatorTableJson.Add("activity_name",activityName);
+                                }
+                                if(pgcrImage != null){
+                                    weeklyRotatorTableJson.Add("pcgr_image",pgcrImage);
+                                }
                             }
                         }
                     }
@@ -192,10 +215,15 @@ public class WeeklyRotatorsTable{
                     using (SqlCommand sqlCommand = new SqlCommand($"SELECT * FROM DestinyActivityTypeDefinition Where Id = {activityTypeId}", msSqlConnection)){
                         using (SqlDataReader reader = sqlCommand.ExecuteReader()){
                             while (reader.Read()){
-                                string activityTypeDefinitionJson = reader["json"].ToString();
-                                ActivityTypeDefinitionJson.Root activityTypeDefinitionRoot = JsonConvert.DeserializeObject<ActivityTypeDefinitionJson.Root>(activityTypeDefinitionJson);
-                                string activityType = activityTypeDefinitionRoot.displayProperties.name;
-                                weeklyRotatorTableJson.Add("activity_type", activityType);
+                                string? activityTypeDefinitionJson = reader["json"].ToString();
+                                ActivityTypeDefinitionJson.Root? activityTypeDefinitionRoot = null;
+                                if(activityTypeDefinitionJson != null){
+                                    activityTypeDefinitionRoot = JsonConvert.DeserializeObject<ActivityTypeDefinitionJson.Root>(activityTypeDefinitionJson);
+                                }
+                                string? activityType = activityTypeDefinitionRoot?.displayProperties?.name;
+                                if(activityType != null){
+                                    weeklyRotatorTableJson.Add("activity_type", activityType);
+                                }
                             }
                         }
 
@@ -205,9 +233,12 @@ public class WeeklyRotatorsTable{
                         sqlCommand.Parameters.AddWithValue("@activityName", "%" + activityName + "%");
                         using (SqlDataReader reader = sqlCommand.ExecuteReader()){
                             while (reader.Read()){
-                                string collectibleDefinitionJson = reader["json"].ToString();
-                                CollectibleDefinitionJson.Root collectibleDefinitionRoot = JsonConvert.DeserializeObject<CollectibleDefinitionJson.Root>(collectibleDefinitionJson);
-                                long collectibleItemHash = collectibleDefinitionRoot.itemHash;
+                                string? collectibleDefinitionJson = reader["json"].ToString();
+                                CollectibleDefinitionJson.Root? collectibleDefinitionRoot = null;
+                                if(collectibleDefinitionJson != null){
+                                    collectibleDefinitionRoot = JsonConvert.DeserializeObject<CollectibleDefinitionJson.Root>(collectibleDefinitionJson)!;
+                                }
+                                long? collectibleItemHash = collectibleDefinitionRoot?.itemHash;
                                 long inventoryItemId = unchecked((int) collectibleItemHash);
                                 inventoryItemIdList.Add(inventoryItemId);
                             }
@@ -217,38 +248,48 @@ public class WeeklyRotatorsTable{
                         using (SqlCommand sqlCommand= new SqlCommand($"SELECT * FROM DestinyInventoryItemDefinition WHERE Id = {itemId}", msSqlConnection)){
                             using (SqlDataReader reader = sqlCommand.ExecuteReader()){
                                 while (reader.Read()){
-                                    string inventoryItemDefinitionJson = reader["json"].ToString();
-                                    InventoryItemDefinitionJson.Root inventoryItemDefinitionRoot = JsonConvert.DeserializeObject<InventoryItemDefinitionJson.Root>(inventoryItemDefinitionJson);
-                                    string iventoryItemName = inventoryItemDefinitionRoot.displayProperties.name;
-                                    string inventoryIcon = inventoryItemDefinitionRoot.displayProperties.icon;
-                                    string inventoryItemType = null;
-                                    
-                                    if(inventoryItemDefinitionRoot.itemCategoryHashes.Contains(22) && inventoryItemDefinitionRoot.itemCategoryHashes.Contains(20)){
-                                        inventoryItemType = "TitanArmor";
-                                    }else if(inventoryItemDefinitionRoot.itemCategoryHashes.Contains(23) && inventoryItemDefinitionRoot.itemCategoryHashes.Contains(20)){
-                                        inventoryItemType = "HunterArmor";
-                                    }else if (inventoryItemDefinitionRoot.itemCategoryHashes.Contains(21) && inventoryItemDefinitionRoot.itemCategoryHashes.Contains(20)){
-                                        inventoryItemType = "WarlockArmor";
-                                    }else if (inventoryItemDefinitionRoot.itemCategoryHashes.Contains(1)){
-                                        inventoryItemType = "Weapon";
+                                    string? inventoryItemDefinitionJson = reader["json"].ToString();
+                                    InventoryItemDefinitionJson.Root? inventoryItemDefinitionRoot = null;
+                                    if (inventoryItemDefinitionJson != null){
+                                        inventoryItemDefinitionRoot = JsonConvert.DeserializeObject<InventoryItemDefinitionJson.Root>(inventoryItemDefinitionJson);
                                     }
-                                    Dictionary<string, object> itemObject = new Dictionary<string, object>{
-                                        { iventoryItemName, new Dictionary<string, string>
-                                            {
-                                                { "Icon", inventoryIcon }
+                                    if (inventoryItemDefinitionRoot != null){
+                                        string inventoryItemName = inventoryItemDefinitionRoot.displayProperties?.name ?? "Unknown";
+                                        string inventoryIcon = inventoryItemDefinitionRoot.displayProperties?.icon ?? "DefaultIcon";
+                                        string inventoryItemType = "";
+                                                            
+                                        if (inventoryItemDefinitionRoot.itemCategoryHashes?.Contains(22) == true && inventoryItemDefinitionRoot.itemCategoryHashes.Contains(20)){
+                                            inventoryItemType = "TitanArmor";
+                                        } else if (inventoryItemDefinitionRoot.itemCategoryHashes?.Contains(23) == true && inventoryItemDefinitionRoot.itemCategoryHashes.Contains(20)){
+                                            inventoryItemType = "HunterArmor";
+                                        } else if (inventoryItemDefinitionRoot.itemCategoryHashes?.Contains(21) == true && inventoryItemDefinitionRoot.itemCategoryHashes.Contains(20)){
+                                            inventoryItemType = "WarlockArmor";
+                                        } else if (inventoryItemDefinitionRoot.itemCategoryHashes?.Contains(1) == true){
+                                            inventoryItemType = "Weapon";
+                                        }
+                                        Dictionary<string, object> itemObject = new Dictionary<string, object>{
+                                            { inventoryItemName, new Dictionary<string, string>{
+                                                    { "Icon", inventoryIcon }
+                                                }
+                                            }
+                                        };
+                                        if (inventoryItemType != null){
+                                            switch (inventoryItemType){
+                                                case "TitanArmor":
+                                                    titanArmor.Add(itemObject);
+                                                    break;
+                                                case "HunterArmor":
+                                                    hunterArmor.Add(itemObject);
+                                                    break;
+                                                case "WarlockArmor":
+                                                    warlockArmor.Add(itemObject);
+                                                    break;
+                                                case "Weapon":
+                                                    weapons.Add(itemObject);
+                                                    break;
                                             }
                                         }
-                                    };
-                                    if (inventoryItemType == "TitanArmor"){
-                                        titanArmor.Add(itemObject);
-                                    }else if (inventoryItemType == "HunterArmor"){
-                                        hunterArmor.Add(itemObject);
-                                    }else if (inventoryItemType == "WarlockArmor"){
-                                        warlockArmor.Add(itemObject);
-                                    }else if (inventoryItemType == "Weapon"){
-                                        weapons.Add(itemObject);
                                     }
-
                                 }
                             }
                         }

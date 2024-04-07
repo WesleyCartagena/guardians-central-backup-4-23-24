@@ -67,7 +67,11 @@ public class BungieApiRequests{
                 // Deserailizes publicMilestoneResponse and builds a C# Object from it using Newtonsoft Json
                 var publicMilestonesObject = JsonConvert.DeserializeObject<PublicMilestonesResponse.RootObject>(publicMilestoneResponseAsString);
 
-                return publicMilestonesObject;
+                if (publicMilestonesObject != null){
+                    return publicMilestonesObject;
+                }else{
+                    throw new ApplicationException("The Public Milestone Object is null");
+                }
 
             }catch{
                 throw new ApplicationException("Unable to get public milestones");
