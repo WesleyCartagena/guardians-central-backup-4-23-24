@@ -55,7 +55,7 @@ public class UpdateActiveWeeklyRotators{
                 if(doesNameExistsInColumn == false){
                     string valueForNameColumn = "ActiveWeeklyRotators";
                     string weeklyRotatorList = "";
-                    Log.Information($"{ActiveWeeklyRotators} name in column was not found. Will create the row now");
+                    Log.Information($"{valueForNameColumn} name in column was not found. Will create the row now");
                     using (SqlCommand addEmptyRowCommand = new SqlCommand($"INSERT INTO {tableName} (NAME, RotatorList) VALUES (@NAME, @RotatorList)",msSqlConnection)){
                         addEmptyRowCommand.Parameters.AddWithValue("@NAME", valueForNameColumn);
                         addEmptyRowCommand.Parameters.AddWithValue("@RotatorList", weeklyRotatorList);
