@@ -41,11 +41,9 @@ class Program{
 
 
         PublicMilestonesResponse.RootObject PublicMilestonesObject = await BungieApiRequests.GetPublicMilestonesRequest(BungieRootPath, GetPublicMilestoneEndpoint, GuardiansCentralApiKey);
-        //Console.WriteLine(PublicMilestonesObject.Response["213479068"]);
         Log.Information(JsonConvert.SerializeObject(PublicMilestonesObject));
-        //Console.WriteLine(JsonConvert.DeserializeObject(PublicMilestonesResponse));
-        //Console.WriteLine(PublicMilestonesResponse.Response);
         WeeklyRotatorsTable.BuildWeeklyRotatorsTable(PublicMilestonesObject, Server, Database, UserId, Password);
+        UpdateActiveWeeklyRotators.UpdateTable(PublicMilestonesObject, Server, Database, UserId, Password);
 
 
     
