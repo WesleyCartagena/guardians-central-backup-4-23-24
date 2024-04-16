@@ -1,10 +1,12 @@
 
 import Carousel from 'react-bootstrap/Carousel';
 import './WeeklyRotators.scss'
-import { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const renderItems = (list) => {
     const result = []
+    console.log(result)
     for(let i = 0; i < list.length; i++){
         result.push(<img className="img-fluid wr-img-icon" key={i} src={list[i]} alt={`Item ${i + 1}`} />);
     }
@@ -48,64 +50,7 @@ const WeeklyRotators = () => {
       };
     }, []);
 
-    // Raid lists
-    let raidWeaponList = [
-        "https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg",
-        "https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg",
-        "https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg",
-        "https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg",
-        "https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg",
-        "https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg",
-        "https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg",
-        "https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg",
-        "https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg",
-        "https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg",
-        "https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg",
-        "https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg"
-    ]
-    let raidTitanArmorList = ["https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg","https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg","https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg", "https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg"]
-    let raidHunterArmorList = ["https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg","https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg","https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg", "https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg"]
-    let raidWarlockArmorList = ["https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg","https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg","https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg", "https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg"]
-    let raidCosmeticList = ["https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg","https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg"]
 
-    // Dungeon lists
-    let dungeonWeaponList = [
-        "https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg",
-        "https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg",
-        "https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg",
-        "https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg",
-        "https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg",
-        "https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg",
-        "https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg",
-        "https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg",
-        "https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg",
-        "https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg",
-        "https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg",
-        "https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg"
-    ]
-    let dungeonTitanArmorList = ["https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg","https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg","https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg", "https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg"]
-    let dungeonHunterArmorList = ["https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg","https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg","https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg", "https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg"]
-    let dungeonWarlockArmorList = ["https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg","https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg","https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg", "https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg"]
-    let dungeonCosmeticList = ["https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg","https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg"]
-    // Exotic mission lists
-    let exoticQuestWeaponList = [
-        "https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg",
-        "https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg",
-        "https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg",
-        "https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg",
-        "https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg",
-        "https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg",
-        "https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg",
-        "https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg",
-        "https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg",
-        "https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg",
-        "https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg",
-        "https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg"
-    ]
-    let exoticQuestTitanArmorList = ["https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg","https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg","https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg", "https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg"]
-    let exoticQuestHunterArmorList = ["https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg","https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg","https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg", "https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg"]
-    let exoticQuestWarlockArmorList = ["https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg","https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg","https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg", "https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg"]
-    let exoticQuestCatalystList = ["https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg","https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg"]
 
     // Nightfall lists
     let weeklyNightfallLoot = ["https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg","https://www.bungie.net/common/destiny2_content/icons/1a4382dd6c3cbc134f2d276c0ff63c7e.jpg"]
@@ -134,7 +79,92 @@ const WeeklyRotators = () => {
         {'Empath':"https://www.bungie.net/common/destiny2_content/icons/6c9052b8fcaea41c2c858c39cf504687.png"},
         {'Empath':"https://www.bungie.net/common/destiny2_content/icons/6c9052b8fcaea41c2c858c39cf504687.png"}
     ]
+    const [raidWeaponList, setRaidWeaponList] = useState([]);
+    const [raidTitanArmorList, setRaidTitanArmorList] = useState([]);
+    const [raidHunterArmorList, setRaidHunterArmorList] = useState([]);
+    const [raidWarlockArmorList, setRaidWarlockArmorList] = useState([]);
+    const [raidCosmeticList, setRaidCosmeticList] = useState([]);
 
+    const [exoticQuestWeaponList, setExoticQuestWeaponList] = useState([]);
+    const [exoticQuestTitanArmorList, setExoticQuestTitanArmorList] = useState([]);
+    const [exoticQuestHunterArmorList, setExoticQuestHunterArmorList] = useState([]);
+    const [exoticQuestWarlockArmorList, setExoticQuestWarlockArmorList] = useState([]);
+    const [exoticQuestCosmeticList, setExoticQuestCosmeticList] = useState([]);
+    const [exoticQuestCatalystList, setExoticQuestCatalystList] = useState([]);
+
+    const [dungeonWeaponList, setDungeonWeaponList] = useState([]);
+    const [dungeonTitanArmorList, setDungeonTitanArmorList] = useState([]);
+    const [dungeonHunterArmorList, setDungeonHunterArmorList] = useState([]);
+    const [dungeonWarlockArmorList, setDungeonWarlockArmorList] = useState([]);
+    const [dungeonCosmeticList, setDungeonCosmeticList] = useState([]);
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get('http://localhost:8000/weeklyrotators');
+                const data = response.data.getWeeklyRotators;
+                //console.log(data);
+    
+                // Parse the JSON data and set the lists
+                data.forEach(item => {
+                    const jsonData = JSON.parse(item.Json);
+                    const activityType = jsonData.activity_type;
+                    const weapons = jsonData.weapons;
+                    const titanArmor = jsonData.titan_armor;
+                    const hunterArmor = jsonData.hunter_armor;
+                    const warlockArmor = jsonData.warlock_armor;
+
+                    switch (activityType) {
+                        case 'Raid':
+                            setRaidWeaponList([]);
+                            setRaidWeaponList(prevList => [...prevList, ...weapons.map(weapon => "https://www.bungie.net" + Object.values(weapon)[0].Icon)]);
+
+                            setRaidTitanArmorList([]);
+                            setRaidTitanArmorList(prevList => [...prevList, ...titanArmor.map(armor => "https://www.bungie.net" + Object.values(armor)[0].Icon)]);
+
+                            setRaidHunterArmorList([]);
+                            setRaidHunterArmorList(prevList => [...prevList, ...hunterArmor.map(armor => "https://www.bungie.net" + Object.values(armor)[0].Icon)]);
+
+                            setRaidWarlockArmorList([]);
+                            setRaidWarlockArmorList(prevList => [...prevList, ...warlockArmor.map(armor => "https://www.bungie.net" + Object.values(armor)[0].Icon)]);
+                            break;
+                        case 'Dungeon':
+                            setDungeonWeaponList([]);
+                            setDungeonWeaponList(prevList => [...prevList, ...weapons.map(weapon => "https://www.bungie.net" + Object.values(weapon)[0].Icon)]);
+
+                            setDungeonTitanArmorList([]);
+                            setDungeonTitanArmorList(prevList => [...prevList, ...titanArmor.map(armor => "https://www.bungie.net" + Object.values(armor)[0].Icon)]);
+
+                            setDungeonHunterArmorList([]);
+                            setDungeonHunterArmorList(prevList => [...prevList, ...hunterArmor.map(armor => "https://www.bungie.net" + Object.values(armor)[0].Icon)]);
+
+                            setDungeonWarlockArmorList([]);
+                            setDungeonWarlockArmorList(prevList => [...prevList, ...warlockArmor.map(armor => "https://www.bungie.net" + Object.values(armor)[0].Icon)]);
+                            break;
+                        case 'Story':
+                            setExoticQuestWeaponList([]);
+                            setExoticQuestWeaponList(prevList => [...prevList, ...weapons.map(weapon => "https://www.bungie.net" + Object.values(weapon)[0].Icon)]);
+
+                            setExoticQuestTitanArmorList([]);
+                            setExoticQuestTitanArmorList(prevList => [...prevList, ...titanArmor.map(armor => "https://www.bungie.net" + Object.values(armor)[0].Icon)]);
+
+                            setExoticQuestHunterArmorList([]);
+                            setExoticQuestHunterArmorList(prevList => [...prevList, ...hunterArmor.map(armor => "https://www.bungie.net" + Object.values(armor)[0].Icon)]);
+
+                            setExoticQuestWarlockArmorList([])
+                            setExoticQuestWarlockArmorList(prevList => [...prevList, ...warlockArmor.map(armor => "https://www.bungie.net" + Object.values(armor)[0].Icon)]);
+                            break;
+                        default:
+                            break;
+                    }
+
+                });
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+    
+        fetchData();
+    }, []);
     return(
           <Carousel>
             <Carousel.Item interval={1000000}>
