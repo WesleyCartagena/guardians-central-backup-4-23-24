@@ -52,7 +52,7 @@ public class ActivityDefinitionJson{
     public class Root{
         public OriginalDisplayProperties? originalDisplayProperties { get; set; }
         public string? pgcrImage { get; set; }
-        public int? hash { get; set; }
+        public long? hash { get; set; }
         public int activityTypeHash { get; set; }    
     }
 
@@ -158,14 +158,15 @@ public class WeeklyRotatorsTable{
                                     Log.Warning("milestoneDefinitionJson is null. Unable to deserialize.");
                                 }
                                 milestoneHash = milestoneDefinitionRoot?.hash;
-                                string? activityHash = null;
+                                long? activityHash = null;
                                 if (milestoneDefinitionRoot != null && milestoneDefinitionRoot.activities != null && milestoneDefinitionRoot.activities.Length > 0) {
-                                    activityHash = JsonConvert.SerializeObject(milestoneDefinitionRoot.activities[0].activityHash);
+                                    activityHash = milestoneDefinitionRoot?.activities[0].activityHash;
                                 }
 
-                                if(activityHash != null){
-                                    activityId =  unchecked((int) int.Parse(activityHash));
+                                if(activityHash != null) {
+                                    activityId =  unchecked((int) activityHash);
                                 }
+                                
                                 string? iconUrl = milestoneDefinitionRoot?.displayProperties?.icon;
                                 if (iconUrl != null) {
                                     weeklyRotatorTableJson.Add("icon_url", iconUrl);

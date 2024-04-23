@@ -21,7 +21,7 @@ public class UpdateActiveWeeklyRotators{
                         if(activity.ChallengeObjectiveHashes != null){
                             if(activity.ChallengeObjectiveHashes.Count > 0){ 
                                 // Check if the key exist already if it does do not add it. This will eliminate the Legend versions from the dict
-                                if (!rawWeeklyRotatorsDictionary.ContainsKey(milestoneKVP.Key)){
+                                if (!rawWeeklyRotatorsDictionary.ContainsKey(milestoneKVP.Key) && milestoneKVP.Key != "3690703860"){
                                     // Create a new dictionary to hold the milestone
                                     rawWeeklyRotatorsDictionary.Add(milestoneKVP.Key, milestoneKVP.Value);
                                 }
