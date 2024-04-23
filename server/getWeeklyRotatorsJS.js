@@ -1,12 +1,12 @@
-const fs = require('fs');
-const toml = require('toml');
+require('dotenv').config();
 const sql = require('mssql');
-const configFile = toml.parse(fs.readFileSync('./config.toml', 'utf-8'));
-const server = configFile.Server;
-const user = configFile.UserId;
-const password = configFile.Password;
-const database = configFile.Database;
-const databasePort = configFile.Port;
+
+const server = process.env.SERVER_IP;
+const user = process.env.DATABASE_USER_ID;
+const password = process.env.DATABASE_PASSWORD;
+const database = process.env.DATABASE_NAME;
+const databasePortString = process.env.DATABASE_PORT;
+const databasePort = parseInt(databasePortString,10)
 
 var serverConfig = {  
     server: server,  
@@ -24,6 +24,7 @@ var serverConfig = {
         trustServerCertificate: true
     }
 }; 
+
 async function getWeeklyRotatorsJS(){
     try {
         const pool = await sql.connect(serverConfig);

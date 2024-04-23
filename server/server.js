@@ -1,38 +1,9 @@
+
 const express = require('express');
 const cors = require('cors');
-const fs = require('fs');
-const toml = require('toml');
-const { Connection, Request } = require('tedious');
-const SqlServerConnection = require('./connection');
-
 const getWeeklyRotatorsJS = require('./getWeeklyRotatorsJS');
-
+require('dotenv').config();
 const app = express();
-const sql = require('mssql');
-
-const configFile = toml.parse(fs.readFileSync('./config.toml', 'utf-8'));
-const server = configFile.Server;
-const user = configFile.UserId;
-const password = configFile.Password;
-const database = configFile.Database;
-const databasePort = configFile.Port;
-
-var serverConfig = {  
-    server: server,  
-    authentication: {
-        type: 'default',
-        options: {
-            userName: user, 
-            password: password  
-        }
-    },
-    options: {
-        database: database,
-        port: databasePort,
-        trustServerCertificate: true
-    }
-}; 
-
 
 app.use(cors());
 app.use(express.json());
